@@ -80,6 +80,11 @@ namespace BasicMenuFramework.Core
                 musicVolumeSlider.value = volume;
                 MusicSlider(volume);
             }
+            else 
+            {
+                musicVolumeSlider.value = 0.5f;
+                MusicSlider(0.5f);
+            }
 
             if(PlayerPrefs.HasKey("SFXVolume"))
             {
@@ -87,12 +92,22 @@ namespace BasicMenuFramework.Core
                 sfxVolumeSlider.value = volume;
                 SFXSlider(volume);
             }
+            else
+            {
+                sfxVolumeSlider.value = 0.5f;
+                SFXSlider(0.5f);
+            }
         
             if(PlayerPrefs.HasKey("MasterVolume"))
             {
                 float volume = PlayerPrefs.GetFloat("MasterVolume");
                 masterVolumeSlider.value = volume;
                 MasterSlider(volume);
+            }
+            else
+            {
+                masterVolumeSlider.value = 0.5f;
+                MasterSlider(0.5f);
             }
         }
     
