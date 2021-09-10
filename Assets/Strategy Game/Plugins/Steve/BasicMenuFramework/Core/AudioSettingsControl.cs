@@ -55,15 +55,15 @@ namespace BasicMenuFramework.Core
             if(string.IsNullOrWhiteSpace(masterGroupExposedParam))
                 throw new ArgumentException($"No parameter name has been assigned for the Audio Mixer Master Group");
             if(string.IsNullOrWhiteSpace(musicGroupExposedParam))
-                throw new ArgumentException($"No parameter name has been assigned for the Audio Mixer Music Group");
+                Debug.LogWarning($"No parameter name has been assigned for the Audio Mixer Music Group");
             if(string.IsNullOrWhiteSpace(sfxGroupExposedParam))
-                throw new ArgumentException($"No parameter name has been assigned for the Audio Mixer SFX Group");
+                Debug.LogWarning($"No parameter name has been assigned for the Audio Mixer SFX Group");
             if(masterVolumeSlider == null)
-                throw new UnassignedReferenceException($"No Slider has been assigned for the Master Volume Slider");
+                Debug.LogWarning($"No Slider has been assigned for the Master Volume Slider");
             if(musicVolumeSlider == null)
-                throw new UnassignedReferenceException($"No Slider has been assigned for the Music Volume Slider");
+                Debug.LogWarning($"No Slider has been assigned for the Music Volume Slider");
             if(sfxVolumeSlider == null)
-                throw new UnassignedReferenceException($"No Slider has been assigned for the SFX Volume Slider");
+                Debug.LogWarning($"No Slider has been assigned for the SFX Volume Slider");
         }
 
     
