@@ -10,6 +10,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -56,6 +59,7 @@
       <workItem from="1630558074571" duration="6208000" />
       <workItem from="1631067573684" duration="1254000" />
       <workItem from="1631239843197" duration="1783000" />
+      <workItem from="1631670392319" duration="3092000" />
     </task>
     <servers />
   </component>

@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Strategy Game/Scenes/Main Menu.unity
+    guid: 1d28fa4169ee88a429aae4ca7072750f
+  - enabled: 1
+    path: Assets/Strategy Game/Scenes/Steve Camera Test.unity
+    guid: 520ed3a1fae27b540adbd4e459d84839
   m_configObjects: {}
