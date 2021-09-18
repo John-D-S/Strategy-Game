@@ -6,15 +6,20 @@ using UnityEngine;
 
 public class NavGridAgent : MonoBehaviour
 {
-	[SerializeField] private NavGrid navGrid;
+	[SerializeField, Tooltip("The NavGrid this Agent is using.")] private NavGrid navGrid;
 	/// <summary> How many nodes per second to walk </summary>
-	public float walkSpeed = .25f;
-	/// <summary> How fast should the agent lerp to its current node? </summary>
-	public float lerpAmount = .25f;
+	[Tooltip("How many nodes per second to walk")] public float walkSpeed = .25f;
+	/// <summary> How fast should the agent lerp to its current node. </summary>
+	[Tooltip("How fast should the agent lerp to its current node.")] public float lerpAmount = .25f;
+	/// <summary> Should the Agent turn to face the direction last traveled in. </summary>
+	[Tooltip("Should the Agent turn to face the direction last traveled in.")]public bool turnInDirectionOfTravel;
 	private NavGridNode currentNode;
 	private NavGridNode targetNode;
 	private List<NavGridNode> currentPath = new List<NavGridNode>();
 
+	/// <summary>
+	/// used to store information about a node during pathfinding
+	/// </summary>
 	private class TempNodeProperties
 	{
 		public TempNodeProperties(float _gCost, float _hCost, NavGridNode _parent)
@@ -24,19 +29,30 @@ public class NavGridAgent : MonoBehaviour
 			parent = _parent;
 		}
 		
+		/// <summary> the distance from the start node </summary>
 		public float gCost;
+		/// <summary> the distance to the end node </summary>
 		public float hCost;
+		/// <summary> used to choose the shortest path </summary>
 		public float FCost => gCost + hCost;
+		/// <summary> these will link in a chain back to the start node </summary>
 		public NavGridNode parent;
 	}
 	
+	/// <summary>
+	/// Calculates and returns the list of NavGridNodes which lead from the start to the target.
+	/// </summary>
+	/// <param name="_start">The node to start the path from.</param>
+	/// <param name="_target">The node for the path to reach.</param>
 	public List<NavGridNode> CalculatePathToTarget(NavGridNode _start, NavGridNode _target)
 	{
+		//an easily accessable dictionary of properties for finding the shortest path
 		Dictionary<NavGridNode, TempNodeProperties> nodeProperties = new Dictionary<NavGridNode, TempNodeProperties>();
 
 		List<NavGridNode> openNodes = new List<NavGridNode>(); //the set of nodes to be evaluated
 		List<NavGridNode> closedNodes = new List<NavGridNode>(); //the set of nodes already evaluated
 
+		//used to find the node in openNodes with the lowest f cost
 		NavGridNode OpenNodeWithLowestFCost()
 		{
 			NavGridNode currentLowestFCostNode = openNodes[0];
@@ -52,11 +68,15 @@ public class NavGridAgent : MonoBehaviour
 			return currentLowestFCostNode;
 		}
 
+		//add the start node to openNodes
 		openNodes.Add(_start);
+		//set the node properties of the first node, so as to not cause an error. parent can be null because the parent of the start node will not be referenced
 		nodeProperties[openNodes[0]] = new TempNodeProperties(0, Vector3.Distance(openNodes[0].transform.position, targetNode.transform.position), null);
+		//if openNodes.count reaches zero, it means that all nodes have been covered and the target node was not found
 		while(openNodes.Count > 0)
 		{
 			NavGridNode current = OpenNodeWithLowestFCost();
+			//move the current node from open to closed
 			openNodes.Remove(current);
 			closedNodes.Add(current);
 
@@ -65,15 +85,20 @@ public class NavGridAgent : MonoBehaviour
 			{
 				break;
 			}
-
+			
 			foreach(NavGridNode neighbor in current.Neighbors)
 			{
+				//do not go over any nodes in closed, because they're closed
 				if(closedNodes.Contains(neighbor))
 				{
 					continue;
 				}
-
-				float newMovementCostToNeighbor = nodeProperties[current].gCost + Vector3.Distance(current.transform.position, neighbor.transform.position);
+				
+				//this will be the neighbor's gCost, and it is the length of the path that traces back to the start node.
+				//it is the length of the path to current, plus the distance from current to neighbor
+				float newMovementCostToNeighbor = nodeProperties[current].gCost + Vector3.Distance(current.transform.position, neighbor.transform.position);	
+				//if the neighbor is not already in open nodes, or the new gCost is less than its current gCost,
+				//update its node properties and add it to open nodes if it is not already there 
 				if(!openNodes.Contains(neighbor) || newMovementCostToNeighbor < nodeProperties[neighbor].gCost)
 				{
 					nodeProperties[neighbor] = new TempNodeProperties(newMovementCostToNeighbor, Vector3.Distance(neighbor.transform.position, targetNode.transform.position), current);
@@ -85,13 +110,17 @@ public class NavGridAgent : MonoBehaviour
 			}
 		}
 
+		//the return value
 		List<NavGridNode> path = new List<NavGridNode>();
+		//start at the _target node and work back through each node's parent
+		//until the start node is reached, adding each one to the return value
 		NavGridNode currentPathNode = _target;
 		while(currentPathNode != _start)
 		{
 			path.Add(currentPathNode);
 			currentPathNode = nodeProperties[currentPathNode].parent;
 		}
+		//reverse the path so that it goes from start to target
 		path.Reverse();
 		return path;
 	}
@@ -133,6 +162,8 @@ public class NavGridAgent : MonoBehaviour
 			yield return new WaitForSeconds(walkSpeed);
 		}
 	}
+
+#region MoveToTargetOverrides
 	
 	public void MoveToTarget(NavGridNode _target)
 	{
@@ -179,6 +210,10 @@ public class NavGridAgent : MonoBehaviour
 		StopAllCoroutines();
 		StartCoroutine(WalkTowardsTarget(nodeTarget, _maxTilesToMove));
 	}
+	
+#endregion
+
+#region NumberOfNodesToTargetOverrides
 
 	public int NumberOfNodesToTarget(NavGridNode _target)
 	{
@@ -200,6 +235,8 @@ public class NavGridAgent : MonoBehaviour
 		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
 		return CalculatePathToTarget(currentNode, nodeTarget).Count;
 	}
+
+#endregion
 	
 	private void FixedUpdate()
 	{

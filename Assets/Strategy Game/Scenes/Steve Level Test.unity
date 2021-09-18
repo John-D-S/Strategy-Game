@@ -14362,8 +14362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navGrid: {fileID: 235312519}
-  walkSpeed: 0.25
-  lerpAmount: 0.25
+  walkSpeed: 0.05
+  lerpAmount: 0.3
 --- !u!23 &2002116651
 MeshRenderer:
   m_ObjectHideFlags: 0
