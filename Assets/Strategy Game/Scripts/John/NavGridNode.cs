@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class Node : MonoBehaviour
+public class NavGridNode : MonoBehaviour
 {
 	[System.NonSerialized] public NavGrid navGrid;
-	private List<Node> neighbors = new List<Node>();
+	public List<NavGridNode> Neighbors { get; } = new List<NavGridNode>();
 
 	private bool IsInLayerMask(GameObject _gameObject, LayerMask _layerMask)
 	{
 		return (_layerMask.value & (1 << _gameObject.layer)) > 0;
 	}
 	
-	public void TryLinkNodes(Node _nodeToLink)
+	public void TryLinkNodes(NavGridNode _navGridNodeToLink)
 	{
-		if(!neighbors.Contains(_nodeToLink) && _nodeToLink != this)
+		if(!Neighbors.Contains(_navGridNodeToLink) && _navGridNodeToLink != this)
 		{
-			neighbors.Add(_nodeToLink);
-			_nodeToLink.TryLinkNodes(this);
+			Neighbors.Add(_navGridNodeToLink);
+			_navGridNodeToLink.TryLinkNodes(this);
 		}
 	}
 
@@ -34,10 +34,10 @@ public class Node : MonoBehaviour
 				if(Physics.Raycast(ray, out hit, navGrid.NodeCheckRayDistance))
 				{
 					GameObject hitObject = hit.collider.gameObject;
-					Node hitNode = hitObject.GetComponent<Node>();
-					if(hitNode)
+					NavGridNode hitNavGridNode = hitObject.GetComponent<NavGridNode>();
+					if(hitNavGridNode)
 					{
-						TryLinkNodes(hitNode);
+						TryLinkNodes(hitNavGridNode);
 					}
 				}
 			}			
@@ -67,8 +67,8 @@ public class Node : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.green;
-		foreach(Node neighbor in neighbors)
+		Gizmos.color = new Color(0, 1, 0, 0.1f);
+		foreach(NavGridNode neighbor in Neighbors)
 		{
 			Gizmos.DrawLine(transform.position, neighbor.transform.position);
 		}

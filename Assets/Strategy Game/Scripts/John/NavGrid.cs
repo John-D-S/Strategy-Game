@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 
 public class NavGrid : MonoBehaviour
@@ -15,31 +18,45 @@ public class NavGrid : MonoBehaviour
 	[SerializeField] private float gridSize = 1;
 	public float GridSize => gridSize;
 	[SerializeField] private GameObject nodePrefab;
-	private List<Node> allNodes = new List<Node>();
+	private List<NavGridNode> allNodes = new List<NavGridNode>();
+	public Dictionary<GameObject, NavGridNode> NodesByGameObject { get; private set; } = new Dictionary<GameObject, NavGridNode>();
 
-	private void OnValidate()
+	public NavGridNode ClosestNavGridNodeToPosition(Vector3 _position)
 	{
-		if(nodePrefab && !nodePrefab.GetComponent<Node>())
+		float SquaredDistance(Vector3 pos1, Vector3 pos2)
 		{
-			nodePrefab = null;
+			return Mathf.Pow(pos1.x - pos2.x, 2) + Mathf.Pow(pos1.y - pos2.y, 2) + Mathf.Pow(pos1.z - pos2.z, 2);
 		}
+		NavGridNode currentClosestNode = allNodes[0];
+		float smallestDistance = Mathf.Infinity;
+		foreach(NavGridNode gridNode in allNodes)
+		{
+			float distanceToGridNode = SquaredDistance(_position, gridNode.transform.position);
+			if(distanceToGridNode < smallestDistance)
+			{
+				smallestDistance = distanceToGridNode;
+				currentClosestNode = gridNode;
+			}
+		}
+		return currentClosestNode;
 	}
-
-	private Node PlaceNode(Vector3 _position)
+	
+	private NavGridNode PlaceNode(Vector3 _position)
 	{
 		GameObject instantiatedNode = Instantiate(nodePrefab, _position, Quaternion.identity, transform);
-		Node nodeComponent = instantiatedNode.GetComponent<Node>();
+		NavGridNode navGridNodeComponent = instantiatedNode.GetComponent<NavGridNode>();
 
-		nodeComponent.navGrid = this;
-		nodeComponent.LinkSurroundingNodes();
-		allNodes.Add(nodeComponent);
-		return nodeComponent;
+		NodesByGameObject[instantiatedNode] = navGridNodeComponent;
+		navGridNodeComponent.navGrid = this;
+		navGridNodeComponent.LinkSurroundingNodes();
+		allNodes.Add(navGridNodeComponent);
+		return navGridNodeComponent;
 	}
 	
 	private void GenerateNodes()
 	{
 		int numberOfNodesPlaced = 1;
-		Queue<Node> newlyPlacedNodes = new Queue<Node>();
+		Queue<NavGridNode> newlyPlacedNodes = new Queue<NavGridNode>();
 		newlyPlacedNodes.Enqueue(PlaceNode(transform.position));
 		while(newlyPlacedNodes.Count > 0 && numberOfNodesPlaced < maxNodes)
 		{
@@ -52,6 +69,14 @@ public class NavGrid : MonoBehaviour
 					numberOfNodesPlaced++;
 				}
 			}
+		}
+	}
+	
+	private void OnValidate()
+	{
+		if(nodePrefab && !nodePrefab.GetComponent<NavGridNode>())
+		{
+			nodePrefab = null;
 		}
 	}
 
