@@ -150,9 +150,9 @@ public class NavGridAgent : MonoBehaviour
 	{
 		if(navGrid.NodesByGameObject.ContainsKey(_target))
 		{
-			NavGridNode targetNode = navGrid.NodesByGameObject[_target];
+			NavGridNode nodeTarget = navGrid.NodesByGameObject[_target];
 			StopAllCoroutines();
-			StartCoroutine(WalkTowardsTarget(targetNode));
+			StartCoroutine(WalkTowardsTarget(nodeTarget));
 		}
 	}
 
@@ -160,24 +160,45 @@ public class NavGridAgent : MonoBehaviour
 	{
 		if(navGrid.NodesByGameObject.ContainsKey(_target))
 		{
-			NavGridNode targetNode = navGrid.NodesByGameObject[_target];
+			NavGridNode nodeTarget = navGrid.NodesByGameObject[_target];
 			StopAllCoroutines();
-			StartCoroutine(WalkTowardsTarget(targetNode, _maxTilesToMove));
+			StartCoroutine(WalkTowardsTarget(nodeTarget, _maxTilesToMove));
 		}
 	}
 	
 	public void MoveToTarget(Vector3 _target)
 	{
-		NavGridNode targetNode = navGrid.ClosestNavGridNodeToPosition(_target);
+		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
 		StopAllCoroutines();
-		StartCoroutine(WalkTowardsTarget(targetNode));
+		StartCoroutine(WalkTowardsTarget(nodeTarget));
 	}
 	
 	public void MoveToTarget(Vector3 _target, int _maxTilesToMove)
 	{
-		NavGridNode targetNode = navGrid.ClosestNavGridNodeToPosition(_target);
+		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
 		StopAllCoroutines();
-		StartCoroutine(WalkTowardsTarget(targetNode, _maxTilesToMove));
+		StartCoroutine(WalkTowardsTarget(nodeTarget, _maxTilesToMove));
+	}
+
+	public int NumberOfNodesToTarget(NavGridNode _target)
+	{
+		return CalculatePathToTarget(currentNode, _target).Count;
+	}
+	
+	public int NumberOfNodesToTarget(GameObject _target)
+	{
+		if(navGrid.NodesByGameObject.ContainsKey(_target))
+		{
+			NavGridNode nodeTarget = navGrid.NodesByGameObject[_target];
+			return CalculatePathToTarget(currentNode, nodeTarget).Count;
+		}
+		return 0;
+	}
+
+	public int NumberOfNodesToTarget(Vector3 _target)
+	{
+		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
+		return CalculatePathToTarget(currentNode, nodeTarget).Count;
 	}
 	
 	private void FixedUpdate()
