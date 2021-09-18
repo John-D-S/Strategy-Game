@@ -7,14 +7,13 @@ using UnityEngine;
 public class NavGridAgent : MonoBehaviour
 {
 	[SerializeField] private NavGrid navGrid;
+	/// <summary> How many nodes per second to walk </summary>
+	public float walkSpeed = .25f;
+	/// <summary> How fast should the agent lerp to its current node? </summary>
+	public float lerpAmount = .25f;
 	private NavGridNode currentNode;
 	private NavGridNode targetNode;
 	private List<NavGridNode> currentPath = new List<NavGridNode>();
-	
-	public void SetTargetNode(NavGridNode _newTargetNode)
-	{
-		targetNode = _newTargetNode;
-	}
 
 	private class TempNodeProperties
 	{
@@ -31,7 +30,7 @@ public class NavGridAgent : MonoBehaviour
 		public NavGridNode parent;
 	}
 	
-	private List<NavGridNode> CalculatePathToTarget(NavGridNode _start, NavGridNode _target)
+	public List<NavGridNode> CalculatePathToTarget(NavGridNode _start, NavGridNode _target)
 	{
 		Dictionary<NavGridNode, TempNodeProperties> nodeProperties = new Dictionary<NavGridNode, TempNodeProperties>();
 
@@ -119,13 +118,71 @@ public class NavGridAgent : MonoBehaviour
 		while(currentNode != targetNode)
 		{
 			MoveTowards(targetNode);
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(walkSpeed);
 		}
 	}
 
+	private IEnumerator WalkTowardsTarget(NavGridNode _target, int _maxTilesToMove)
+	{
+		targetNode = _target;
+		int walkedTiles = 0;
+		while(currentNode != targetNode && walkedTiles < _maxTilesToMove)
+		{
+			MoveTowards(targetNode);
+			walkedTiles++;
+			yield return new WaitForSeconds(walkSpeed);
+		}
+	}
+	
+	public void MoveToTarget(NavGridNode _target)
+	{
+		StopAllCoroutines();
+		StartCoroutine(WalkTowardsTarget(_target));
+	}
+
+	public void MoveToTarget(NavGridNode _target, int _maxTilesToMove)
+	{
+		StopAllCoroutines();
+        StartCoroutine(WalkTowardsTarget(_target, _maxTilesToMove));
+	}
+	
+	public void MoveToTarget(GameObject _target)
+	{
+		if(navGrid.NodesByGameObject.ContainsKey(_target))
+		{
+			NavGridNode targetNode = navGrid.NodesByGameObject[_target];
+			StopAllCoroutines();
+			StartCoroutine(WalkTowardsTarget(targetNode));
+		}
+	}
+
+	public void MoveToTarget(GameObject _target, int _maxTilesToMove)
+	{
+		if(navGrid.NodesByGameObject.ContainsKey(_target))
+		{
+			NavGridNode targetNode = navGrid.NodesByGameObject[_target];
+			StopAllCoroutines();
+			StartCoroutine(WalkTowardsTarget(targetNode, _maxTilesToMove));
+		}
+	}
+	
+	public void MoveToTarget(Vector3 _target)
+	{
+		NavGridNode targetNode = navGrid.ClosestNavGridNodeToPosition(_target);
+		StopAllCoroutines();
+		StartCoroutine(WalkTowardsTarget(targetNode));
+	}
+	
+	public void MoveToTarget(Vector3 _target, int _maxTilesToMove)
+	{
+		NavGridNode targetNode = navGrid.ClosestNavGridNodeToPosition(_target);
+		StopAllCoroutines();
+		StartCoroutine(WalkTowardsTarget(targetNode, _maxTilesToMove));
+	}
+	
 	private void FixedUpdate()
 	{
-		transform.position = Vector3.Lerp(transform.position, currentNode.transform.position, 0.1f);
+		transform.position = Vector3.Lerp(transform.position, currentNode.transform.position, lerpAmount);
 	}
 
 	private void Start()
@@ -143,23 +200,6 @@ public class NavGridAgent : MonoBehaviour
 		foreach(NavGridNode node in currentPath)
 		{
 			Gizmos.DrawSphere(node.transform.position, 0.25f);
-		}
-	}
-
-	private void Update()
-	{
-		if(Input.GetMouseButtonDown(0))
-		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit = new RaycastHit();
-			if(Physics.Raycast(ray, out hit, 1000))
-			{
-				if(navGrid.NodesByGameObject.ContainsKey(hit.collider.gameObject))
-				{
-					StopAllCoroutines();
-					StartCoroutine(WalkTowardsTarget(navGrid.NodesByGameObject[hit.collider.gameObject]));
-				}
-			}
 		}
 	}
 }

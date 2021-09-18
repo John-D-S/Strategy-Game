@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Cube.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Cube.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Node.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +24,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82EC470C-9131-4935-8AD0-C83AD628910C/7a/31694f28/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Node.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
@@ -69,10 +64,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17968">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17968" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -93,7 +88,8 @@
       <workItem from="1631239843197" duration="1783000" />
       <workItem from="1631670392319" duration="4432000" />
       <workItem from="1631872646245" duration="12571000" />
-      <workItem from="1631922526213" duration="12728000" />
+      <workItem from="1631922526213" duration="15227000" />
+      <workItem from="1631948773975" duration="2548000" />
     </task>
     <servers />
   </component>
