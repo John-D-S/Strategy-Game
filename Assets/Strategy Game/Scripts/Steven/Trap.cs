@@ -6,12 +6,13 @@ using UnityEngine;
 namespace StrategyGame.Player
 {
     /// <summary>
-    /// Handles the data to picking up and set the trap
+    /// Handles the data to picking up and the trap colliding with the enemy and exploding.
     /// </summary>
     public class Trap : MonoBehaviour
     {
         public new ParticleSystem particleSystem;
-        [Tooltip("For when the trap is set and not a pickup.")]public bool setTrap = false;
+        [Tooltip("For when the trap is set and not a pickup.")]
+        public bool setTrap = false;
         private MeshRenderer rend;
         
         // Start is called before the first frame update
@@ -31,7 +32,7 @@ namespace StrategyGame.Player
             {
                 Debug.Log("Player has picked up a trap");
                 
-                // Increase trap count on GameManager.
+                //todo Increase trap count on GameManager.
                 
                 
                 //Destroy object.
