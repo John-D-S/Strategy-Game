@@ -20,8 +20,22 @@ namespace StrategyGame.Player
         {
             rend = GetComponent<MeshRenderer>();
         }
+    
+        /// <summary>
+        /// A flash effect for the set trap.
+        /// </summary>
+        private void Flash()
+        {
+            //todo Add a flashing effect here for when the trap has been set
+            
+        }
 
-        
+        private void Update()
+        {
+            Flash();
+        }
+
+
         /// <summary>
         /// Handles collisons with the trap by both player and enemy.
         /// </summary>
