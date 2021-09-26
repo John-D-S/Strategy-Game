@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/Trap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/ExtraMovePickup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PointsPopUp.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -65,7 +66,7 @@
       <workItem from="1631239843197" duration="1783000" />
       <workItem from="1631670392319" duration="4432000" />
       <workItem from="1632021750344" duration="7258000" />
-      <workItem from="1632620122753" duration="735000" />
+      <workItem from="1632620122753" duration="2987000" />
     </task>
     <servers />
   </component>

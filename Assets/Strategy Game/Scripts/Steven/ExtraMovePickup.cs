@@ -1,3 +1,5 @@
+using StrategyGame.UI;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,7 +35,8 @@ namespace StrategyGame.Player
                 Debug.Log($"Player now has an extra {extraMoves} moves");
                 
                 //todo increase action points/moves in gamemanager
-                
+                // todo activate pickup feedback UI
+
                 Destroy(this.gameObject);
             }
         }
