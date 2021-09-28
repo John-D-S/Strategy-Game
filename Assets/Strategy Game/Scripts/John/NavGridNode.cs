@@ -9,6 +9,8 @@ public class NavGridNode : MonoBehaviour
 	[System.NonSerialized] public NavGrid navGrid;
 	public List<NavGridNode> Neighbors { get; } = new List<NavGridNode>();
 
+	public bool IsBlocked => Physics.CheckSphere(transform.position, navGrid.GridSize, navGrid.PathBlockingLayers);
+
 	private bool IsInLayerMask(GameObject _gameObject, LayerMask _layerMask)
 	{
 		return (_layerMask.value & (1 << _gameObject.layer)) > 0;

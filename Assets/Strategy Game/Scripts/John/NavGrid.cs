@@ -11,6 +11,8 @@ public class NavGrid : MonoBehaviour
 	[SerializeField] private int maxNodes = 2048;
 	[SerializeField] private LayerMask allowedNodeLayers;
 	public LayerMask AllowedNodeLayers => allowedNodeLayers;
+	[SerializeField] private LayerMask pathBlockingLayers;
+	public LayerMask PathBlockingLayers => pathBlockingLayers;
 	[SerializeField] private float nodeCheckHeight = 2;
 	public float NodeCheckHeight => nodeCheckHeight;
 	[SerializeField] private float nodeCheckRayDistance = 100;

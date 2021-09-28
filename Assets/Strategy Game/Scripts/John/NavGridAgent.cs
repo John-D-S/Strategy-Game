@@ -7,6 +7,7 @@ using UnityEngine;
 public class NavGridAgent : MonoBehaviour
 {
 	[SerializeField, Tooltip("The NavGrid this Agent is using.")] private NavGrid navGrid;
+	public NavGrid AgentNavGrid => navGrid;
 	/// <summary> How many nodes per second to walk </summary>
 	[Tooltip("How many nodes per second to walk")] public float walkSpeed = .25f;
 	/// <summary> How fast should the agent lerp to its current node. </summary>
@@ -16,6 +17,30 @@ public class NavGridAgent : MonoBehaviour
 	private NavGridNode currentNode;
 	private NavGridNode targetNode;
 	private List<NavGridNode> currentPath = new List<NavGridNode>();
+
+	/// <summary>
+	/// returns the first node in the path towards the target
+	/// </summary>
+	public NavGridNode NextNodeTowardTarget(NavGridNode _target, bool _accountForBlocks = false)
+	{
+		if(_target == currentNode)
+		{
+			return currentNode;
+		}
+		if(_target == currentPath[currentPath.Count - 1])
+		{
+			return currentPath[0];
+		}
+		else
+		{
+			List<NavGridNode> calculatedPath = CalculatePathToTarget(currentNode, _target, _accountForBlocks);
+			if(calculatedPath == null)
+			{
+				return null;
+			}
+			return calculatedPath[0];
+		}
+	}
 
 	/// <summary>
 	/// used to store information about a node during pathfinding
@@ -38,13 +63,14 @@ public class NavGridAgent : MonoBehaviour
 		/// <summary> these will link in a chain back to the start node </summary>
 		public NavGridNode parent;
 	}
-	
+
 	/// <summary>
 	/// Calculates and returns the list of NavGridNodes which lead from the start to the target.
 	/// </summary>
-	/// <param name="_start">The node to start the path from.</param>
+	/// <param name="_start">The node to start the path from (not Included in the returned path).</param>
 	/// <param name="_target">The node for the path to reach.</param>
-	public List<NavGridNode> CalculatePathToTarget(NavGridNode _start, NavGridNode _target)
+	/// <param name="_accountForBlocks">if true, the path will not go through blocked nodes</param>
+	public List<NavGridNode> CalculatePathToTarget(NavGridNode _start, NavGridNode _target, bool _accountForBlocks = false)
 	{
 		//an easily accessable dictionary of properties for finding the shortest path
 		Dictionary<NavGridNode, TempNodeProperties> nodeProperties = new Dictionary<NavGridNode, TempNodeProperties>();
@@ -88,8 +114,8 @@ public class NavGridAgent : MonoBehaviour
 			
 			foreach(NavGridNode neighbor in current.Neighbors)
 			{
-				//do not go over any nodes in closed, because they're closed
-				if(closedNodes.Contains(neighbor))
+				//do not go over any nodes in closed, because they're closed. Also don't go over blocked nodes if _accountForBlocks is true.
+				if(closedNodes.Contains(neighbor) || (neighbor.IsBlocked && _accountForBlocks))
 				{
 					continue;
 				}
@@ -110,28 +136,39 @@ public class NavGridAgent : MonoBehaviour
 			}
 		}
 
-		//the return value
-		List<NavGridNode> path = new List<NavGridNode>();
-		//start at the _target node and work back through each node's parent
-		//until the start node is reached, adding each one to the return value
-		NavGridNode currentPathNode = _target;
-		while(currentPathNode != _start)
+		if(nodeProperties.ContainsKey(_target))
 		{
-			path.Add(currentPathNode);
-			currentPathNode = nodeProperties[currentPathNode].parent;
+			//the return value
+			List<NavGridNode> path = new List<NavGridNode>();
+			//start at the _target node and work back through each node's parent
+			//until the start node is reached, adding each one to the return value
+			NavGridNode currentPathNode = _target;
+			while(currentPathNode != _start)
+			{
+				path.Add(currentPathNode);
+				currentPathNode = nodeProperties[currentPathNode].parent;
+			}
+			//reverse the path so that it goes from start to target
+			path.Reverse();
+			return path;
 		}
-		//reverse the path so that it goes from start to target
-		path.Reverse();
-		return path;
+		else
+		{
+			return null;
+		}
 	}
 
-	public void MoveTowards(NavGridNode _target)
+	public void MoveTowards(NavGridNode _target, bool _accountForBlocks = false)
 	{
 		if(currentNode != _target)
 		{
-			if(!(currentPath.Count > 0 && currentPath[currentPath.Count - 1] == _target))
+			if(!(currentPath.Count > 0 && currentPath[currentPath.Count - 1] == _target) || _accountForBlocks)
 			{
-				currentPath = CalculatePathToTarget(currentNode, targetNode);
+				currentPath = CalculatePathToTarget(currentNode, targetNode, _accountForBlocks);
+				if(currentPath == null)
+				{
+					return;
+				}
 			}
 			if(currentPath.Count > 0)
 			{
@@ -141,23 +178,23 @@ public class NavGridAgent : MonoBehaviour
 		}
 	}
 	
-	private IEnumerator WalkTowardsTarget(NavGridNode _target)
+	private IEnumerator WalkTowardsTarget(NavGridNode _target, bool _accountForBlocks = false)
 	{
 		targetNode = _target;
 		while(currentNode != targetNode)
 		{
-			MoveTowards(targetNode);
+			MoveTowards(targetNode, _accountForBlocks);
 			yield return new WaitForSeconds(walkSpeed);
 		}
 	}
 
-	private IEnumerator WalkTowardsTarget(NavGridNode _target, int _maxTilesToMove)
+	private IEnumerator WalkTowardsTarget(NavGridNode _target, int _maxTilesToMove, bool _accountForBlocks = false)
 	{
 		targetNode = _target;
 		int walkedTiles = 0;
 		while(currentNode != targetNode && walkedTiles < _maxTilesToMove)
 		{
-			MoveTowards(targetNode);
+			MoveTowards(targetNode, _accountForBlocks);
 			walkedTiles++;
 			yield return new WaitForSeconds(walkSpeed);
 		}
