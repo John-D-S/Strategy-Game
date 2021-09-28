@@ -37,7 +37,7 @@ namespace BasicMenuFramework.Core
             [Header("Button and Scene to load"), Tooltip("Assign a button")]
             public Button button;
             [Tooltip("Assign the scene for the button to load when clicked")]
-            public SceneAsset sceneToLoad;
+            public string sceneToLoad;
 
             /// <summary>
             /// Loads the set scene in the class.
@@ -45,7 +45,7 @@ namespace BasicMenuFramework.Core
             public void LoadScene()
             {
                 if(sceneToLoad != null)
-                    SceneManager.LoadScene(sceneToLoad.name);
+                    SceneManager.LoadScene(sceneToLoad);
                 else
                     throw new NullReferenceException($"No corresponding Scene to Load has been set in the Inspector for this Button.");
             }
