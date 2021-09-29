@@ -27,19 +27,17 @@ public class NavGridAgent : MonoBehaviour
 		{
 			return currentNode;
 		}
-		if(_target == currentPath[currentPath.Count - 1])
+		if(currentPath != null && currentPath.Count > 0 && _target == currentPath[currentPath.Count - 1])
 		{
 			return currentPath[0];
 		}
-		else
+		
+		List<NavGridNode> calculatedPath = CalculatePathToTarget(currentNode, _target, _accountForBlocks);
+		if(calculatedPath == null)
 		{
-			List<NavGridNode> calculatedPath = CalculatePathToTarget(currentNode, _target, _accountForBlocks);
-			if(calculatedPath == null)
-			{
-				return null;
-			}
-			return calculatedPath[0];
+			return null;
 		}
+		return calculatedPath[0];
 	}
 
 	/// <summary>
@@ -97,7 +95,7 @@ public class NavGridAgent : MonoBehaviour
 		//add the start node to openNodes
 		openNodes.Add(_start);
 		//set the node properties of the first node, so as to not cause an error. parent can be null because the parent of the start node will not be referenced
-		nodeProperties[openNodes[0]] = new TempNodeProperties(0, Vector3.Distance(openNodes[0].transform.position, targetNode.transform.position), null);
+		nodeProperties[openNodes[0]] = new TempNodeProperties(0, Vector3.Distance(openNodes[0].transform.position, _target.transform.position), null);
 		//if openNodes.count reaches zero, it means that all nodes have been covered and the target node was not found
 		while(openNodes.Count > 0)
 		{
@@ -107,7 +105,7 @@ public class NavGridAgent : MonoBehaviour
 			closedNodes.Add(current);
 
 			//path has been found
-			if(current == targetNode)
+			if(current == _target)
 			{
 				break;
 			}
@@ -127,7 +125,7 @@ public class NavGridAgent : MonoBehaviour
 				//update its node properties and add it to open nodes if it is not already there 
 				if(!openNodes.Contains(neighbor) || newMovementCostToNeighbor < nodeProperties[neighbor].gCost)
 				{
-					nodeProperties[neighbor] = new TempNodeProperties(newMovementCostToNeighbor, Vector3.Distance(neighbor.transform.position, targetNode.transform.position), current);
+					nodeProperties[neighbor] = new TempNodeProperties(newMovementCostToNeighbor, Vector3.Distance(neighbor.transform.position, _target.transform.position), current);
 					if(!openNodes.Contains(neighbor))
 					{
 						openNodes.Add(neighbor);
@@ -152,17 +150,15 @@ public class NavGridAgent : MonoBehaviour
 			path.Reverse();
 			return path;
 		}
-		else
-		{
-			return null;
-		}
+		return null;
 	}
 
 	public void MoveTowards(NavGridNode _target, bool _accountForBlocks = false)
 	{
+		targetNode = _target;
 		if(currentNode != _target)
 		{
-			if(!(currentPath.Count > 0 && currentPath[currentPath.Count - 1] == _target) || _accountForBlocks)
+			if(currentPath.Count < 1 || currentPath[currentPath.Count - 1] != _target || _accountForBlocks)
 			{
 				currentPath = CalculatePathToTarget(currentNode, targetNode, _accountForBlocks);
 				if(currentPath == null)
@@ -277,6 +273,7 @@ public class NavGridAgent : MonoBehaviour
 	
 	private void FixedUpdate()
 	{
+		Debug.DrawLine(transform.position, transform.position + Vector3.up);
 		transform.position = Vector3.Lerp(transform.position, currentNode.transform.position, lerpAmount);
 	}
 

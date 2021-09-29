@@ -44,6 +44,7 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     public void LooseGame()
     {
+        Debug.Log("looseGame");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

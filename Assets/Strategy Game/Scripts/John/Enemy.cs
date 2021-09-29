@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
 	public void PerformAction()
 	{
-		NavGridNode targetNode = agent.AgentNavGrid.ClosestNavGridNodeToPosition(agent.transform.position);
+		NavGridNode targetNode = agent.AgentNavGrid.ClosestNavGridNodeToPosition(playerAgent.transform.position);
 		NavGridNode nextNodeTowardTarget = agent.NextNodeTowardTarget(targetNode, true);
 		if(nextNodeTowardTarget == null)
 		{
