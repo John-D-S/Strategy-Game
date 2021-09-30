@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 
 using UnityEngine;
@@ -22,6 +23,8 @@ public class NavGrid : MonoBehaviour
 	[SerializeField] private GameObject nodePrefab;
 	private List<NavGridNode> allNodes = new List<NavGridNode>();
 	public Dictionary<GameObject, NavGridNode> NodesByGameObject { get; private set; } = new Dictionary<GameObject, NavGridNode>();
+	[SerializeField, Tooltip("Turn this off before entering play mode")] private bool showNodesInEditMode;
+
 
 	public NavGridNode ClosestNavGridNodeToPosition(Vector3 _position)
 	{
@@ -73,6 +76,53 @@ public class NavGrid : MonoBehaviour
 			}
 		}
 	}
+
+	IEnumerator DestroyAllNodesInEditMode()
+	{
+		yield return null;
+		if(!Application.isPlaying)
+		{
+			foreach(NavGridNode navGridNode in allNodes)
+			{
+				if(navGridNode)
+				{
+					DestroyImmediate(navGridNode.gameObject);
+				}
+			}
+			while(transform.childCount > 0)
+			{
+				foreach(Transform child in transform)
+				{
+					DestroyImmediate(child.gameObject);
+				}
+			}
+			allNodes.Clear();
+		}
+	}
+	
+	IEnumerator RegenerateAllNodesInEditMode()
+	{
+		yield return null;
+		if(!Application.isPlaying)
+		{
+			foreach(NavGridNode navGridNode in allNodes)
+			{
+				if(navGridNode)
+				{
+					DestroyImmediate(navGridNode.gameObject);
+				}
+			}
+			allNodes.Clear();
+			while(transform.childCount > 0)
+			{
+				foreach(Transform child in transform)
+				{
+					DestroyImmediate(child.gameObject);
+				}
+			}
+			GenerateNodes();
+		}
+	}
 	
 	private void OnValidate()
 	{
@@ -80,11 +130,21 @@ public class NavGrid : MonoBehaviour
 		{
 			nodePrefab = null;
 		}
+		if(!Application.isPlaying)
+		{
+			if(showNodesInEditMode)
+			{
+				StartCoroutine(RegenerateAllNodesInEditMode());
+			}
+			else
+			{
+				StartCoroutine(DestroyAllNodesInEditMode());
+			}
+		}
 	}
 
 	private void Start()
 	{
-		allNodes.Clear();
 		GenerateNodes();
 	}
 }
