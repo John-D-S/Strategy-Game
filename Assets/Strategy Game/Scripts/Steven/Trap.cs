@@ -51,6 +51,7 @@ namespace StrategyGame.Player
                 particleSystem.Play();
                 
                 //todo play explosion sound
+                //todo reduce enemy moves remaining to 0.
                 
                 //Destroy object and particle system.
                 Destroy(this.gameObject,0.35f);
