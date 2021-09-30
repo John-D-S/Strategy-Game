@@ -34,7 +34,7 @@ namespace StrategyGame.Player
                 Debug.Log("Player has picked up a trap");
                 
                 //todo Increase trap count on GameManager.
-                
+                // todo play pickup sound
                 
                 //Destroy object.
                 Destroy(this.gameObject);
@@ -49,6 +49,8 @@ namespace StrategyGame.Player
                 Instantiate(particleSystem,this.transform);
                 particleSystem.transform.position = this.transform.position;
                 particleSystem.Play();
+                
+                //todo play explosion sound
                 
                 //Destroy object and particle system.
                 Destroy(this.gameObject,0.35f);
