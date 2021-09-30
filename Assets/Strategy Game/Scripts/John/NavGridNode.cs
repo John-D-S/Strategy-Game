@@ -72,7 +72,10 @@ public class NavGridNode : MonoBehaviour
 		Gizmos.color = new Color(0, 1, 0, 0.1f);
 		foreach(NavGridNode neighbor in Neighbors)
 		{
-			Gizmos.DrawLine(transform.position, neighbor.transform.position);
+			if(neighbor)
+			{
+				Gizmos.DrawLine(transform.position, neighbor.transform.position);
+			}
 		}
 	}
 }
