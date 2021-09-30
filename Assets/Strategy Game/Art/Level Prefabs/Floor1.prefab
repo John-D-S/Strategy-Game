@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2578874458596768681}
   - component: {fileID: 1419890336023635009}
   - component: {fileID: 3350642372362189495}
+  - component: {fileID: 1655433979199598415}
   m_Layer: 6
   m_Name: Floor1
   m_TagString: Walkable
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1655433979199598415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834308008576268027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0690867, y: 0.029880447, z: 0.9270574}
+  m_Center: {x: -0.00000005960466, y: 0, z: 0.000000014901165}
