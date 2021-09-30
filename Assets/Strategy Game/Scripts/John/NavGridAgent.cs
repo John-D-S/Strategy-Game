@@ -15,6 +15,7 @@ public class NavGridAgent : MonoBehaviour
 	/// <summary> Should the Agent turn to face the direction last traveled in. </summary>
 	[Tooltip("Should the Agent turn to face the direction last traveled in.")]public bool turnInDirectionOfTravel;
 	private NavGridNode currentNode;
+	public NavGridNode CurrentNode => currentNode;
 	private NavGridNode targetNode;
 	private List<NavGridNode> currentPath = new List<NavGridNode>();
 
