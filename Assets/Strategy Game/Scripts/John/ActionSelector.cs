@@ -29,6 +29,11 @@ public class ActionSelector : MonoBehaviour
     
     private void OnEnable()
     {
+        if(!player || !rectTransform)
+        {
+            player = FindObjectOfType<PlayerController>();
+            rectTransform = GetComponent<RectTransform>();    
+        }
         rectTransform.anchoredPosition = Input.mousePosition;
         availablePlayerActions = player.AvailableActions(player.SelectedNode);
         for(int i = 0; i < availablePlayerActions.Count; i++)
@@ -37,6 +42,7 @@ public class ActionSelector : MonoBehaviour
             Button instantiatedButton = instantiatedButtonObject.GetComponent<Button>();
             instantiatedButton.onClick.AddListener(availablePlayerActions[i].PlayerExecuteAction);
             TextMeshProUGUI buttonText = instantiatedButtonObject.GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log(availablePlayerActions[i].ActionName);
             buttonText.text = availablePlayerActions[i].ActionName;
         }
     }
@@ -45,7 +51,7 @@ public class ActionSelector : MonoBehaviour
     {
         foreach(RectTransform childTransform in buttonPanel)
         {
-            Destroy(childTransform);
+            Destroy(childTransform.gameObject);
         }
     }
 }

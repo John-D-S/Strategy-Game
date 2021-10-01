@@ -13,84 +13,6 @@ using UnityEngine.WSA;
 using Cursor = UnityEngine.Cursor;
 using Object = UnityEngine.Object;
 
-public abstract class PlayerAction
-{
-    public PlayerAction(NavGridNode _node, PlayerController _player)
-    {
-        node = _node;
-        player = _player;
-    }
-    protected string actionName;
-    public string ActionName => actionName;
-    protected NavGridNode node;
-    protected PlayerController player;
-    private bool hasBeenExexuted;
-    
-    public void PlayerExecuteAction()
-    {
-        if(player.NeighboringNodes.Contains(node))
-        {
-            ExecuteAction();
-            hasBeenExexuted = true;
-        }
-    }
-
-    public void PlayerUndoAction()
-    {
-        if(hasBeenExexuted)
-        {
-            UndoAction();
-            hasBeenExexuted = false;
-        }
-        
-    }
-    
-    protected abstract void ExecuteAction();
-    protected abstract void UndoAction();
-}
-
-public class Move : PlayerAction
-{
-    private NavGridNode lastNode;
-    public Move(NavGridNode _node, PlayerController _player) : base(_node, _player) { }
-    
-    protected override void ExecuteAction()
-    {
-        lastNode = player.CurrentNode;
-        player.PlayerAgent.MoveToTarget(node);
-        actionName = "Move Here";
-    }
-
-    protected override void UndoAction()
-    {
-        player.PlayerAgent.MoveToTarget(lastNode);
-    }
-}
-
-public class PlaceItem : PlayerAction
-{
-    
-    private Item itemToPlace;
-    private GameObject ObjectToPlace => itemToPlace.gameObject;
-    private GameObject placedObject;
-
-    public PlaceItem(NavGridNode _node, PlayerController _player, Item _itemToPlace) : base(_node, _player)
-    {
-        itemToPlace = _itemToPlace;
-        actionName = $"Place {itemToPlace.ItemName} here";
-    }
-    
-    protected override void ExecuteAction()
-    {
-        placedObject = Object.Instantiate(ObjectToPlace);
-    }
-
-    protected override void UndoAction()
-    {
-        Object.Destroy(placedObject);
-    }
-}
-
 [RequireComponent(typeof(NavGridAgent))]
 public class PlayerController : MonoBehaviour
 {
@@ -133,14 +55,21 @@ public class PlayerController : MonoBehaviour
         return returnValue;
     }
 
-    public void TryPickupItem()
+    public Item TryPickupItem()
     {
-        Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, transform.position);
+        Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
         if(item)
         {
             collectedItems.Add(item);
             item.gameObject.SetActive(false);
         }
+        return item;
+    }
+
+    public void UndoPickupItem(ref Item _item)
+    {
+        _item.gameObject.SetActive(true);
+        collectedItems.Remove(_item);
     }
     
     private TurnManager turnManager;
@@ -169,6 +98,16 @@ public class PlayerController : MonoBehaviour
         turnManager.StartNextTurn();
     }
 
+    public void ShowActionSelector()
+    {
+        actionSelector.gameObject.SetActive(true);
+    }
+
+    public void HideActionSelector()
+    {
+        actionSelector.gameObject.SetActive(false);
+    }
+    
     private void UpdatePlayerActions()
     {
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -188,11 +127,11 @@ public class PlayerController : MonoBehaviour
             if(node && NeighboringNodes.Contains(node))
             {
                 selectedNode = node;
-                actionSelector.gameObject.SetActive(true);
+                ShowActionSelector();
             }
             else
             {
-                actionSelector.gameObject.SetActive(false);
+                HideActionSelector();
             }
         }
     }

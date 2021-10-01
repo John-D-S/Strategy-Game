@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +29,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unity Editor Installations/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82EC470C-9131-4935-8AD0-C83AD628910C/7a/31694f28/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,8 +45,9 @@
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
@@ -74,10 +78,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32436">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="32436" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -102,7 +106,7 @@
       <workItem from="1631948773975" duration="7802000" />
       <workItem from="1632790753473" duration="13816000" />
       <workItem from="1632875412855" duration="6151000" />
-      <workItem from="1633046799727" duration="3781000" />
+      <workItem from="1633046799727" duration="6570000" />
     </task>
     <servers />
   </component>

@@ -10,8 +10,6 @@ using Action = System.Action;
 
 public class Item : MonoBehaviour
 {
-	[SerializeField] private GameObject itemPrefab;
-	public GameObject ItemPrefab => itemPrefab;
 	[SerializeField] private string itemName;
 	public string ItemName => itemName;
 	[System.NonSerialized] public bool isActivated;
