@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
         if(item)
         {
-            Debug.Log("ItemIsHere");
             collectedItems.Add(item);
             item.gameObject.SetActive(false);
         }
