@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int actionsAtStartOfTurn = 5;
     public int ActionsAtStartOfTurn => actionsAtStartOfTurn;
     [SerializeField] private Button undoActionButton;
+    [System.NonSerialized] public bool isPlayerTurn = true;
     
     private NavGridAgent agent;
     public NavGridAgent PlayerAgent => agent;
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
         if(item)
         {
+            Debug.Log("ItemIsHere");
             collectedItems.Add(item);
             item.gameObject.SetActive(false);
         }
@@ -94,7 +96,6 @@ public class PlayerController : MonoBehaviour
             PlayerAction lastPlayerAction = actionsDoneThisTurn[actionsDoneThisTurn.Count - 1];
             lastPlayerAction.PlayerUndoAction();
             actionsDoneThisTurn.RemoveAt(actionsDoneThisTurn.Count - 1);
-            Debug.Log(actionsDoneThisTurn.Count);
         }
     }
 
@@ -115,30 +116,37 @@ public class PlayerController : MonoBehaviour
     
     private void UpdatePlayerActions()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if(isPlayerTurn)
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            NavGridNode node = null;
-            if(Physics.Raycast(mouseRay, out hit))
+            if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
-                Dictionary<GameObject, NavGridNode> currentNeighborNodesbyGo = NeighboringNodesByGameObject;
-                GameObject hitObject = hit.collider.gameObject;
-                if(currentNeighborNodesbyGo.ContainsKey(hitObject))
+                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit = new RaycastHit();
+                NavGridNode node = null;
+                if(Physics.Raycast(mouseRay, out hit))
                 {
-                    node = currentNeighborNodesbyGo[hitObject];
+                    Dictionary<GameObject, NavGridNode> currentNeighborNodesbyGo = NeighboringNodesByGameObject;
+                    GameObject hitObject = hit.collider.gameObject;
+                    if(currentNeighborNodesbyGo.ContainsKey(hitObject))
+                    {
+                        node = currentNeighborNodesbyGo[hitObject];
+                    }
+                }
+                if(node && NeighboringNodes.Contains(node))
+                {
+                    selectedNode = node;
+                    HideActionSelector();
+                    ShowActionSelector();
+                }
+                else
+                {
+                    HideActionSelector();
                 }
             }
-            if(node && NeighboringNodes.Contains(node))
-            {
-                selectedNode = node;
-                HideActionSelector();
-                ShowActionSelector();
-            }
-            else
-            {
-                HideActionSelector();
-            }
+        }
+        else
+        {
+            HideActionSelector();
         }
     }
     

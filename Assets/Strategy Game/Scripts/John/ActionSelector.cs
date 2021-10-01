@@ -38,7 +38,6 @@ public class ActionSelector : MonoBehaviour
         }
         rectTransform.anchoredPosition = Input.mousePosition;
         availablePlayerActions = player.AvailableActions(player.SelectedNode);
-        Debug.Log($"{player.actionsDoneThisTurn.Count}, {Random.Range(0f, 1f)}");
         if(player.actionsDoneThisTurn.Count < player.ActionsAtStartOfTurn)
         {
             for(int i = 0; i < availablePlayerActions.Count; i++)

@@ -22,6 +22,7 @@ public class Item : MonoBehaviour
 		{
 			if(Vector3.Distance(_position, item.transform.position) < _maxDistance)
 			{
+				Debug.Log("ThereIsItemHere");
 				if(!item.isActivated)
 				{
 					return item;
@@ -33,7 +34,7 @@ public class Item : MonoBehaviour
 
 	private void Awake()
 	{
-		allItems.Clear();
+		Debug.Log(allItems.Count);
 	}
 
 	public void Start()

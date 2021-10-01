@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level Test.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +49,11 @@
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
@@ -112,7 +112,7 @@
       <workItem from="1631948773975" duration="7802000" />
       <workItem from="1632790753473" duration="13816000" />
       <workItem from="1632875412855" duration="6151000" />
-      <workItem from="1633046799727" duration="9939000" />
+      <workItem from="1633046799727" duration="12096000" />
     </task>
     <servers />
   </component>
@@ -154,18 +154,17 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <condition expression="actionsDoneThisTurn &gt; 9" language="C#" />
           <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs</url>
-          <line>117</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\PlayerController.cs" initialLine="117" containingFunctionPresentation="method 'UpdatePlayerActions'">
+          <line>62</line>
+          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\PlayerController.cs" initialLine="62" containingFunctionPresentation="method 'TryPickupItem'">
             <startOffsets>
-              <option value="3446" />
+              <option value="1958" />
             </startOffsets>
             <endOffsets>
-              <option value="3447" />
+              <option value="1959" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

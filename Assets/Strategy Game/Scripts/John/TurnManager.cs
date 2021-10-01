@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager theTurnManager;
+    private PlayerController player;
     public List<Enemy> allEnemies = new List<Enemy>();
 
     public void Awake()
@@ -18,16 +19,19 @@ public class TurnManager : MonoBehaviour
 
     public void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         allEnemies = FindObjectsOfType<Enemy>().ToList();
     }
 
     public void StartNextTurn()
     {
+        player.actionsDoneThisTurn.Clear();
         StartCoroutine(RunNextTurn());
     }
 
     private IEnumerator RunNextTurn()
     {
+        player.isPlayerTurn = false;
         foreach(var enemy in allEnemies)
         {
             enemy.TakeTurn();
@@ -37,6 +41,7 @@ public class TurnManager : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
         }
+        player.isPlayerTurn = true;
     }
 
     /// <summary>
@@ -44,7 +49,6 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     public void LooseGame()
     {
-        Debug.Log("looseGame");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
