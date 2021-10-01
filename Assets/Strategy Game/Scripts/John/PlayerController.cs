@@ -20,6 +20,8 @@ public abstract class PlayerAction
         node = _node;
         player = _player;
     }
+    protected string actionName;
+    public string ActionName => actionName;
     protected NavGridNode node;
     protected PlayerController player;
     private bool hasBeenExexuted;
@@ -50,13 +52,13 @@ public abstract class PlayerAction
 public class Move : PlayerAction
 {
     private NavGridNode lastNode;
-    
     public Move(NavGridNode _node, PlayerController _player) : base(_node, _player) { }
     
     protected override void ExecuteAction()
     {
         lastNode = player.CurrentNode;
         player.PlayerAgent.MoveToTarget(node);
+        actionName = "Move Here";
     }
 
     protected override void UndoAction()
@@ -65,19 +67,22 @@ public class Move : PlayerAction
     }
 }
 
-public class PlaceGameObject : PlayerAction
+public class PlaceItem : PlayerAction
 {
-    private GameObject objectToPlace;
+    
+    private Item itemToPlace;
+    private GameObject ObjectToPlace => itemToPlace.gameObject;
     private GameObject placedObject;
 
-    public PlaceGameObject(NavGridNode _node, PlayerController _player, GameObject _objectToPlace) : base(_node, _player)
+    public PlaceItem(NavGridNode _node, PlayerController _player, Item _itemToPlace) : base(_node, _player)
     {
-        objectToPlace = _objectToPlace;
+        itemToPlace = _itemToPlace;
+        actionName = $"Place {itemToPlace.ItemName} here";
     }
     
     protected override void ExecuteAction()
     {
-        placedObject = Object.Instantiate(objectToPlace);
+        placedObject = Object.Instantiate(ObjectToPlace);
     }
 
     protected override void UndoAction()
@@ -123,7 +128,7 @@ public class PlayerController : MonoBehaviour
         returnValue.Add(new Move(_node, this));
         foreach(Item collectedItem in collectedItems)
         {
-            returnValue.Add(new PlaceGameObject(_node, this, collectedItem.gameObject));
+            returnValue.Add(new PlaceItem(_node, this, collectedItem));
         }
         return returnValue;
     }
