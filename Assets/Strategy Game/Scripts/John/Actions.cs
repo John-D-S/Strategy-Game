@@ -19,6 +19,7 @@ public abstract class PlayerAction
     {
         if(player.NeighboringNodes.Contains(node))
         {
+            player.actionsDoneThisTurn.Add(this);
             ExecuteAction();
             player.HideActionSelector();
             hasBeenExexuted = true;
@@ -58,7 +59,10 @@ public class Move : PlayerAction
 
     protected override void UndoAction()
     {
-        player.UndoPickupItem(ref pickedUpItem);
+        if(pickedUpItem)
+        {
+            player.UndoPickupItem(pickedUpItem);
+        }
         player.PlayerAgent.MoveToTarget(lastNode);
     }
 }

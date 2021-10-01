@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.WSA;
 
 using Cursor = UnityEngine.Cursor;
@@ -17,14 +19,15 @@ using Object = UnityEngine.Object;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int actionsAtStartOfTurn = 5;
-    private List<PlayerAction> availableActions = new List<PlayerAction>();
+    public int ActionsAtStartOfTurn => actionsAtStartOfTurn;
+    [SerializeField] private Button undoActionButton;
     
     private NavGridAgent agent;
     public NavGridAgent PlayerAgent => agent;
     public NavGridNode CurrentNode => agent.CurrentNode;
     public List<NavGridNode> NeighboringNodes => CurrentNode.Neighbors;
     public List<Item> collectedItems = new List<Item>();
-    public List<PlayerAction> actionsDoneThisTurn;
+    public List<PlayerAction> actionsDoneThisTurn = new List<PlayerAction>();
 
     private NavGridNode selectedNode;
     public NavGridNode SelectedNode => selectedNode;
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
         return item;
     }
 
-    public void UndoPickupItem(ref Item _item)
+    public void UndoPickupItem(Item _item)
     {
         _item.gameObject.SetActive(true);
         collectedItems.Remove(_item);
@@ -85,11 +88,13 @@ public class PlayerController : MonoBehaviour
 
     public void UndoAction()
     {
+        HideActionSelector();
         if(actionsDoneThisTurn.Count > 0)
         {
-            PlayerAction lastPlayerAction = actionsDoneThisTurn[actionsDoneThisTurn.Count];
+            PlayerAction lastPlayerAction = actionsDoneThisTurn[actionsDoneThisTurn.Count - 1];
             lastPlayerAction.PlayerUndoAction();
-            actionsDoneThisTurn.Remove(lastPlayerAction);
+            actionsDoneThisTurn.RemoveAt(actionsDoneThisTurn.Count - 1);
+            Debug.Log(actionsDoneThisTurn.Count);
         }
     }
 
@@ -127,6 +132,7 @@ public class PlayerController : MonoBehaviour
             if(node && NeighboringNodes.Contains(node))
             {
                 selectedNode = node;
+                HideActionSelector();
                 ShowActionSelector();
             }
             else
@@ -141,6 +147,10 @@ public class PlayerController : MonoBehaviour
         turnManager = TurnManager.theTurnManager;
         agent = GetComponent<NavGridAgent>();
         actionSelector = FindObjectOfType<ActionSelector>(true);
+        if(undoActionButton)
+        {
+            undoActionButton.onClick.AddListener(UndoAction);
+        }
     }
     
     private void Update()

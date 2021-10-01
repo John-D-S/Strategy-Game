@@ -9,6 +9,8 @@ using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Random = UnityEngine.Random;
+
 [RequireComponent(typeof(RectTransform))]
 public class ActionSelector : MonoBehaviour
 {
@@ -36,14 +38,17 @@ public class ActionSelector : MonoBehaviour
         }
         rectTransform.anchoredPosition = Input.mousePosition;
         availablePlayerActions = player.AvailableActions(player.SelectedNode);
-        for(int i = 0; i < availablePlayerActions.Count; i++)
+        Debug.Log($"{player.actionsDoneThisTurn.Count}, {Random.Range(0f, 1f)}");
+        if(player.actionsDoneThisTurn.Count < player.ActionsAtStartOfTurn)
         {
-            GameObject instantiatedButtonObject = Instantiate(ActionButtonPrefab, buttonPanel);
-            Button instantiatedButton = instantiatedButtonObject.GetComponent<Button>();
-            instantiatedButton.onClick.AddListener(availablePlayerActions[i].PlayerExecuteAction);
-            TextMeshProUGUI buttonText = instantiatedButtonObject.GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log(availablePlayerActions[i].ActionName);
-            buttonText.text = availablePlayerActions[i].ActionName;
+            for(int i = 0; i < availablePlayerActions.Count; i++)
+            {
+                GameObject instantiatedButtonObject = Instantiate(ActionButtonPrefab, buttonPanel);
+                Button instantiatedButton = instantiatedButtonObject.GetComponent<Button>();
+                instantiatedButton.onClick.AddListener(availablePlayerActions[i].PlayerExecuteAction);
+                TextMeshProUGUI buttonText = instantiatedButtonObject.GetComponentInChildren<TextMeshProUGUI>();
+                buttonText.text = availablePlayerActions[i].ActionName;
+            }
         }
     }
 
