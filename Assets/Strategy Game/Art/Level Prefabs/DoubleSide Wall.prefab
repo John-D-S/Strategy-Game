@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6031027299807874236}
   - component: {fileID: 2466533968452467130}
   - component: {fileID: 1091481013457213157}
+  - component: {fileID: 5987629233293222740}
   m_Layer: 0
   m_Name: DoubleSide Wall
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5987629233293222740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87913839089490023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0630875, y: 0.7387165, z: 0.73471403}
+  m_Center: {x: 0, y: 0, z: -0.18623137}
 --- !u!1 &1692968387981756577
 GameObject:
   m_ObjectHideFlags: 0

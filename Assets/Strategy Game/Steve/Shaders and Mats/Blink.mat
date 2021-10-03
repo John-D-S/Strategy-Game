@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_Blink
+  m_Name: Blink
   m_Shader: {fileID: 4800000, guid: 98f48fca87f683f42887d5f552888d25, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -26,5 +26,5 @@ Material:
     m_Floats:
     - _Blink: 1
     m_Colors:
-    - _Color: {r: 0.9339623, g: 0.029957218, b: 0.029957218, a: 1}
+    - _Color: {r: 1, g: 0.029957218, b: 0.029957218, a: 1}
   m_BuildTextureStacks: []

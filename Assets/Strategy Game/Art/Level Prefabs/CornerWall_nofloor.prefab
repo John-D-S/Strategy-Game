@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &2670724950587172520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548284169359248847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66017026, y: 0.7387165, z: 0.7237325}
+  m_Center: {x: 0.20145927, y: 0, z: -0.1807406}
 --- !u!1 &8828901793217947808
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +24,7 @@ GameObject:
   - component: {fileID: 4009027911421902206}
   - component: {fileID: 5043769127745367682}
   - component: {fileID: 731006178874665125}
+  - component: {fileID: 6786471865632747371}
   m_Layer: 0
   m_Name: CornerWall_nofloor
   m_TagString: Untagged
@@ -85,6 +99,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6786471865632747371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828901793217947808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.72647476, y: 0.74049634, z: 1.7371906}
+  m_Center: {x: 0.6787815, y: 0, z: -0.18379337}
 --- !u!1001 &6992626988732825882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e98f4b20be73fd45af3bcaf8c9127de, type: 3}
+--- !u!1 &8548284169359248847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1070838638400342251, guid: 7e98f4b20be73fd45af3bcaf8c9127de, type: 3}
+  m_PrefabInstance: {fileID: 8682369676163761444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2606261896688343316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6653703801547250736, guid: 7e98f4b20be73fd45af3bcaf8c9127de, type: 3}
