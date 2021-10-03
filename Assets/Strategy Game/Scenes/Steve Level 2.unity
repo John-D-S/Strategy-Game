@@ -1578,6 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allEnemies: []
+  popupUIControl: {fileID: 1950290517}
 --- !u!4 &93070839
 Transform:
   m_ObjectHideFlags: 0
@@ -4043,7 +4044,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9533963
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4051,23 +4052,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1242466
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9917175
+      value: 0.98340183
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12843841
+      value: 0.12736143
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: 0.12815793
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.016597869
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4556,6 +4557,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 416105481}
+  - component: {fileID: 416105482}
+  - component: {fileID: 416105483}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -4578,6 +4581,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416105482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416105480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f18f6aad617734a82967dae1a046ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movesPerTurn: 5
+  playerAgent: {fileID: 399715040}
+--- !u!114 &416105483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416105480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1425f86d7a427e345a415c06accb791c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navGrid: {fileID: 42434859}
+  walkSpeed: 0.25
+  lerpAmount: 0.25
+  turnInDirectionOfTravel: 1
 --- !u!1001 &418244416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25461,8 +25494,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1193512957571066140}
     m_Modifications:
     - target: {fileID: 3006286110902762329, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
+      propertyPath: sceneLoadButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006286110902762329, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
+      propertyPath: sceneLoadButtons.Array.data[1].button
+      value: 
+      objectReference: {fileID: 921787919}
+    - target: {fileID: 3006286110902762329, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
       propertyPath: sceneLoadButtons.Array.data[0].sceneToLoad
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006286110902762329, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
+      propertyPath: sceneLoadButtons.Array.data[1].sceneToLoad
+      value: Steve Level 2
       objectReference: {fileID: 0}
     - target: {fileID: 3006286110902762330, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
       propertyPath: m_Pivot.x
@@ -26035,7 +26080,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6188103777519848628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 93070838}
+        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
+        m_MethodName: StartNextTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &8036614538243588574
 RectTransform:
   m_ObjectHideFlags: 0

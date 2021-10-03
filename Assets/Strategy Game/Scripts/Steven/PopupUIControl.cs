@@ -31,8 +31,8 @@ namespace StrategyGame.UI
         
     
         [Header("Messages")]
-        [SerializeField] private PopUpStruct winPopup;
-        [SerializeField] private PopUpStruct losePopup;
+        [SerializeField] public PopUpStruct winPopup;
+        [SerializeField] public PopUpStruct losePopup;
         [SerializeField] private PopUpStruct startPopup;
     
     
