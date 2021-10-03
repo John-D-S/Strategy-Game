@@ -44,8 +44,8 @@ namespace StrategyGame.UI
             if(startButton != null)
                 startButton.onClick.AddListener(StartButton);
             ShowPopup(startPopup);
-            startButton.enabled = true;
-            retryButton.enabled = false;
+            startButton.gameObject.SetActive(true);
+            retryButton.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -65,8 +65,8 @@ namespace StrategyGame.UI
         {
             // Set the popup active and set the fields
             popupPanel.SetActive(true);
-            startButton.enabled = false;
-            retryButton.enabled = true;
+            startButton.gameObject.SetActive(false);
+            retryButton.gameObject.SetActive(true);
             title.text = _popUpStruct.title;
             description.text = _popUpStruct.description;
             // Pause time
