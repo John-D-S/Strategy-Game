@@ -4230,31 +4230,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7611799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.870802
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9916124
+      value: 0.98340183
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.002223316
+      value: 0.12736142
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12922798
+      value: 0.12815791
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00028974577
+      value: -0.016597865
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22936,7 +22936,7 @@ MonoBehaviour:
     title: You've been caught!
     description: 'The guard has caught you. You''ll never enjoy the spicy wonders
       of Zirkon Prime and the glory of a triple sunset on Nebulon 7. You''ll be wiped
-      and reprogrammed to greese the guards joints when they get stiff, lucky you. '
+      and reprogrammed to greese the guards joints when they get squeaky, lucky you. '
   startPopup:
     title: Escape
     description: You've come to your senses and realised you don't want to work in
