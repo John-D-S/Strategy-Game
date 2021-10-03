@@ -12,33 +12,20 @@ namespace StrategyGame.Player
     /// <summary>
     /// This class handles the extra move pickup and adding more action points for the player to use.
     /// </summary>
-    public class ExtraMovePickup : MonoBehaviour
+    public class ExtraMovePickup : Item
     {
-        [SerializeField] private int extraMoves = 0;
-        [SerializeField] private int min = 1;
-        [SerializeField] private int max = 5;
-        
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private int extraMoves = 3;
+
+        public override void PickUpItem(PlayerController _playerController)
         {
-            extraMoves = Random.Range(min, max);
+            _playerController.additionalActions += extraMoves;
+            gameObject.SetActive(false);
         }
 
-        /// <summary>
-        /// Handles the collisions with objects in the scene
-        /// </summary>
-        /// <param name="_other">The other object colliding with this</param>
-        private void OnCollisionEnter(Collision _other)
+        public override void UndoPickUpItem(PlayerController _playerController)
         {
-            if(_other.collider.tag == "Player")
-            {
-                Debug.Log($"Player now has an extra {extraMoves} moves");
-                
-                //todo increase action points/moves in gamemanager
-                // todo activate pickup feedback UI
-
-                Destroy(this.gameObject);
-            }
+            gameObject.SetActive(true);
+            _playerController.additionalActions -= extraMoves;
         }
     }
 }

@@ -42,7 +42,7 @@ public class ActionSelector : MonoBehaviour
         }
         rectTransform.anchoredPosition = Input.mousePosition / rootCanvas.scaleFactor;
         availablePlayerActions = player.AvailableActions(player.SelectedNode);
-        if(player.actionsDoneThisTurn.Count < player.ActionsAtStartOfTurn)
+        if(player.actionsDoneThisTurn.Count < player.ActionsAtStartOfTurn + player.additionalActions)
         {
             for(int i = 0; i < availablePlayerActions.Count; i++)
             {

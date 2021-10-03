@@ -37,10 +37,11 @@
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/ExtraMovePickup.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />

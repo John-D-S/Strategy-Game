@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 	public bool HasFinishedTurn { get; private set; } = true;
 	[SerializeField] private NavGridAgent playerAgent;
 
+	[SerializeField] private ParticleSystem electricEffect;
+	[SerializeField] private AudioSource soundEffect;
+
 	private void Start()
 	{
 		agent = GetComponent<NavGridAgent>();
@@ -30,10 +33,14 @@ public class Enemy : MonoBehaviour
 		}
 		if(nextNodeTowardTarget == targetNode)
 		{
-			TurnManager.theTurnManager.LooseGame();
+			electricEffect.Play();
+			soundEffect.Play();
+			Invoke(nameof(LoseGame), 0.75f);
 		}
 		agent.MoveTowards(nextNodeTowardTarget);
 	}
+
+	private void LoseGame() => TurnManager.theTurnManager.LooseGame();
 
 	public void TakeTurn()
 	{

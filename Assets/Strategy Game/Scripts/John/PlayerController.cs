@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using TMPro;
+
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 
@@ -20,8 +22,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int actionsAtStartOfTurn = 5;
     public int ActionsAtStartOfTurn => actionsAtStartOfTurn;
+    public int additionalActions;
     [SerializeField] private Button undoActionButton;
     [System.NonSerialized] public bool isPlayerTurn = true;
+    [SerializeField] private TextMeshProUGUI turnsRemainingDisplay;
     
     private NavGridAgent agent;
     public NavGridAgent PlayerAgent => agent;
@@ -64,23 +68,21 @@ public class PlayerController : MonoBehaviour
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
         if(item)
         {
-            collectedItems.Add(item);
-            item.gameObject.SetActive(false);
+            item.PickUpItem(this);
         }
         return item;
     }
 
     public void UndoPickupItem(Item _item)
     {
-        _item.gameObject.SetActive(true);
-        collectedItems.Remove(_item);
+        _item.UndoPickUpItem(this);
     }
     
     private TurnManager turnManager;
 
     public void DoAction(NavGridNode _node, PlayerAction _playerAction)
     {
-        if(actionsDoneThisTurn.Count < actionsAtStartOfTurn)
+        if(actionsDoneThisTurn.Count < actionsAtStartOfTurn + additionalActions)
         {
             actionsDoneThisTurn.Add(_playerAction);
             actionsDoneThisTurn[actionsDoneThisTurn.Count - 1].PlayerExecuteAction();
@@ -100,7 +102,12 @@ public class PlayerController : MonoBehaviour
 
     public void EndTurn()
     {
-        turnManager.StartNextTurn();
+        if(isPlayerTurn)
+        {
+            actionsDoneThisTurn.Clear();
+            additionalActions = 0;
+            turnManager.StartNextTurn();
+        }
     }
 
     public void ShowActionSelector()
@@ -148,7 +155,15 @@ public class PlayerController : MonoBehaviour
             HideActionSelector();
         }
     }
-    
+
+    private void FixedUpdate()
+    {
+        if(turnsRemainingDisplay)
+        {
+            turnsRemainingDisplay.text = $"Actions Remaining: {(actionsAtStartOfTurn + additionalActions) - actionsDoneThisTurn.Count} / {(actionsAtStartOfTurn + additionalActions)}";
+        }
+    }
+
     private void Start()
     {
         turnManager = TurnManager.theTurnManager;
