@@ -21,9 +21,12 @@ public class ActionSelector : MonoBehaviour
     public GameObject ActionButtonPrefab;
     private List<PlayerAction> availablePlayerActions = new List<PlayerAction>();
     public delegate void PlayerActionDelegate();
+
+    private Canvas rootCanvas;
     
     private void Start()
     {
+        rootCanvas = GetComponentInParent<Canvas>();
         player = FindObjectOfType<PlayerController>();
         rectTransform = GetComponent<RectTransform>();
         gameObject.SetActive(false);
@@ -34,9 +37,10 @@ public class ActionSelector : MonoBehaviour
         if(!player || !rectTransform)
         {
             player = FindObjectOfType<PlayerController>();
-            rectTransform = GetComponent<RectTransform>();    
+            rectTransform = GetComponent<RectTransform>();
+            rootCanvas = GetComponentInParent<Canvas>();
         }
-        rectTransform.anchoredPosition = Input.mousePosition;
+        rectTransform.anchoredPosition = Input.mousePosition / rootCanvas.scaleFactor;
         availablePlayerActions = player.AvailableActions(player.SelectedNode);
         if(player.actionsDoneThisTurn.Count < player.ActionsAtStartOfTurn)
         {

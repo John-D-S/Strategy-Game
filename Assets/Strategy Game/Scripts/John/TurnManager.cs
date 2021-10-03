@@ -1,3 +1,5 @@
+using StrategyGame.UI;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ public class TurnManager : MonoBehaviour
     public static TurnManager theTurnManager;
     private PlayerController player;
     public List<Enemy> allEnemies = new List<Enemy>();
+    [SerializeField] private PopupUIControl popupUIControl;
 
     public void Awake()
     {
@@ -52,6 +55,8 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     public void LooseGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        popupUIControl.ShowPopup(popupUIControl.losePopup);
+        player.isPlayerTurn = false;
     }
 }

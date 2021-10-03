@@ -123,22 +123,4 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs</url>
-          <line>20</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\Enemy.cs" initialLine="20" containingFunctionPresentation="method 'PerformAction'" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs</url>
-          <line>62</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\PlayerController.cs" initialLine="62" containingFunctionPresentation="method 'TryPickupItem'" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
 </project>
