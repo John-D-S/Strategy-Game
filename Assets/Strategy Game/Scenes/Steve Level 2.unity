@@ -7005,15 +7005,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12736139
+      value: 0.12736142
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12815794
+      value: 0.1281579
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.016597867
+      value: -0.016597865
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7265,14 +7265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1138182223, guid: 72d19722c9d89de4fa0d2255061eb701, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1819767715, guid: 72d19722c9d89de4fa0d2255061eb701, type: 3}
-      propertyPath: startPopup.title
-      value: Escape
-      objectReference: {fileID: 0}
     - target: {fileID: 1193512957163669738, guid: 72d19722c9d89de4fa0d2255061eb701, type: 3}
       propertyPath: m_Pivot.x
       value: 0
