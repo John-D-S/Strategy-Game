@@ -4441,7 +4441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionsAtStartOfTurn: 5
+  additionalActions: 0
   undoActionButton: {fileID: 7172534241598711205}
+  turnsRemainingDisplay: {fileID: 1193512958797756313}
   collectedItems: []
 --- !u!114 &399715040
 MonoBehaviour:
@@ -10995,7 +10997,7 @@ PrefabInstance:
       objectReference: {fileID: 6034957751646507721, guid: 88676d5992e370d4fa7ab73937da6f91, type: 3}
     - target: {fileID: 7748914359315986242, guid: ce2b49c19ce40484e8a7e416d9912f44, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7748914359315986242, guid: ce2b49c19ce40484e8a7e416d9912f44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21639,7 +21641,7 @@ PrefabInstance:
       objectReference: {fileID: -915216440286173917, guid: 88676d5992e370d4fa7ab73937da6f91, type: 3}
     - target: {fileID: 7748914359315986242, guid: ce2b49c19ce40484e8a7e416d9912f44, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7748914359315986242, guid: ce2b49c19ce40484e8a7e416d9912f44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25574,8 +25576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 212.455, y: 135.38}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 50}
+  m_SizeDelta: {x: 532.909, y: 97.36}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1193512957976008883
 GameObject:
@@ -25647,10 +25649,10 @@ RectTransform:
   m_Father: {fileID: 1193512957976008882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1193512958797756295
 GameObject:
@@ -26551,9 +26553,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 93070838}
-        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: StartNextTurn
+      - m_Target: {fileID: 399715039}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

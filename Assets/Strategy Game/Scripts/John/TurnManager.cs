@@ -28,11 +28,7 @@ public class TurnManager : MonoBehaviour
 
     public void StartNextTurn()
     {
-        if(player.isPlayerTurn)
-        {
-            player.actionsDoneThisTurn.Clear();
-            StartCoroutine(RunNextTurn());
-        }
+        StartCoroutine(RunNextTurn());
     }
 
     private IEnumerator RunNextTurn()
