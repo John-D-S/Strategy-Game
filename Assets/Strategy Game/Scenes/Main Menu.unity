@@ -2785,7 +2785,9 @@ MonoBehaviour:
   pauseButton: {fileID: 0}
   showPopUp: 0
   popUp: {fileID: 0}
-  sceneLoadButtons: []
+  sceneLoadButtons:
+  - button: {fileID: 1547444830}
+    sceneToLoad: Steve Level 2
 --- !u!114 &991897181
 MonoBehaviour:
   m_ObjectHideFlags: 0
