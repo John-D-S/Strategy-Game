@@ -31,6 +31,18 @@ public class Item : MonoBehaviour
 		return null;
 	}
 
+	public virtual void PickUpItem(PlayerController _playerController)
+	{
+		_playerController.collectedItems.Add(this);
+		gameObject.SetActive(false);
+	}
+
+	public virtual void UndoPickUpItem(PlayerController _playerController)
+	{
+		gameObject.SetActive(true);
+		_playerController.collectedItems.Remove(this);
+	}
+	
 	public void Start()
 	{
 		allItems.Add(this);
