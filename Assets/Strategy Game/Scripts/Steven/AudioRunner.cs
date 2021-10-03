@@ -28,5 +28,10 @@ namespace StrategyGame
             musicGroup.SetFloat("MusicVolume", pauseVolume);
         }
 
+        /// <summary>
+        /// Set the Music Groups audio back to the original volume.
+        /// </summary>
+        public void ResumeAudio() => musicGroup.SetFloat("MusicVolume", originalVolume);
+
     }
 }
