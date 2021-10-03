@@ -14,6 +14,9 @@ public class NavGridAgent : MonoBehaviour
 	[Tooltip("How fast should the agent lerp to its current node.")] public float lerpAmount = .25f;
 	/// <summary> Should the Agent turn to face the direction last traveled in. </summary>
 	[Tooltip("Should the Agent turn to face the direction last traveled in.")]public bool turnInDirectionOfTravel;
+	/// <summary> How fast should the agent tourn to face the direction last traveled in, if it is set to do that. </summary>
+	[SerializeField, Tooltip("Should the Agent turn to face the direction last traveled in.")] private float turnLerpSpeed = 0.2f;
+	
 	private NavGridNode currentNode;
 	public NavGridNode CurrentNode => currentNode;
 	private NavGridNode targetNode;
@@ -274,8 +277,13 @@ public class NavGridAgent : MonoBehaviour
 	
 	private void FixedUpdate()
 	{
-		Debug.DrawLine(transform.position, transform.position + Vector3.up);
 		transform.position = Vector3.Lerp(transform.position, currentNode.transform.position, lerpAmount);
+
+		if(turnInDirectionOfTravel)
+		{
+			Vector3 moveDirection = (currentNode.transform.position - transform.position).normalized;
+			transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + new Vector3(moveDirection.x, 0, moveDirection.z), turnLerpSpeed), Vector3.up);
+		}
 	}
 
 	private void Start()
