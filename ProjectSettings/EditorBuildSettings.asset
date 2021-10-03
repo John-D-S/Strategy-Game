@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Strategy Game/Scenes/Main Menu.unity
     guid: 1d28fa4169ee88a429aae4ca7072750f
   - enabled: 1
+    path: Assets/Strategy Game/Scenes/Steve Level 2.unity
+    guid: 41f73885c74ed9643840e206e915251a
+  - enabled: 0
     path: Assets/Strategy Game/Scenes/Steve Camera Test.unity
     guid: 520ed3a1fae27b540adbd4e459d84839
   m_configObjects: {}
