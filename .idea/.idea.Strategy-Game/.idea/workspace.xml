@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="" />
+    <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Strategy-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +23,21 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/e7/90c53cf0/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Unity Editor Installations/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82EC470C-9131-4935-8AD0-C83AD628910C/7a/31694f28/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -27,10 +45,13 @@
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGrid.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridNode.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs" />
       <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/NavGridAgent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1xZMGv7LDylzb6GpHsPpMGt8Aic" />
@@ -61,10 +82,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32436">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="32436" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -89,8 +110,7 @@
       <workItem from="1631948773975" duration="7802000" />
       <workItem from="1632790753473" duration="13816000" />
       <workItem from="1632875412855" duration="6151000" />
-      <workItem from="1632976111779" duration="5691000" />
-      <workItem from="1633052909494" duration="967000" />
+      <workItem from="1633046799727" duration="12790000" />
     </task>
     <servers />
   </component>
@@ -121,8 +141,28 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs</url>
           <line>20</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\Enemy.cs" initialLine="20" containingFunctionPresentation="method 'PerformAction'" />
+          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\Enemy.cs" initialLine="20" containingFunctionPresentation="method 'PerformAction'">
+            <startOffsets>
+              <option value="448" />
+            </startOffsets>
+            <endOffsets>
+              <option value="553" />
+            </endOffsets>
+          </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/PlayerController.cs</url>
+          <line>62</line>
+          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\PlayerController.cs" initialLine="62" containingFunctionPresentation="method 'TryPickupItem'">
+            <startOffsets>
+              <option value="1958" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1959" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
