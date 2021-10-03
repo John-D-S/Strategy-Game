@@ -20,7 +20,7 @@ namespace StrategyGame
         public AudioMixer musicGroup;
         
         /// <summary>
-        /// Use this to pause the other Audio in the Scene.
+        /// Use this to pause the other Audio in the Scene on the Music Group.
         /// </summary>
         public void PauseAudio()
         {
