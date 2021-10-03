@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace StrategyGame
 {
@@ -9,15 +10,23 @@ namespace StrategyGame
     /// </summary>
     public class AudioRunner : MonoBehaviour
     {
+        [SerializeField] private float pauseVolume = -50f;
+        [SerializeField] private float originalVolume = 0;
+        
         public AudioSource effect;
-        //public AudioSource audio2;
-        //public AudioSource audio3;
+        //public AudioSource effect2;
+        //public AudioSource effect3;
 
+        public AudioMixer musicGroup;
+        
         /// <summary>
-        /// Plays the passed AudioSource
+        /// Use this to pause the other Audio in the Scene.
         /// </summary>
-        /// <param name="_audio">The AudioSource that will play.</param>
-        public void PlayAudio(AudioSource _audio) => _audio.Play();
+        public void PauseAudio()
+        {
+            musicGroup.GetFloat("MusicVolume", out originalVolume);
+            musicGroup.SetFloat("MusicVolume", pauseVolume);
+        }
 
     }
 }

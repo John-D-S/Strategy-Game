@@ -33,7 +33,8 @@ namespace StrategyGame
                 if(_collider.tag == "Player")
                 {
                     popupUIControl.ShowPopup(popupUIControl.winPopup);
-                    audioRunner.PlayAudio(audioRunner.effect);
+                    audioRunner.effect.Play();
+                    audioRunner.PauseAudio();
                 }
             }
             
