@@ -1,3 +1,5 @@
+using StrategyGame;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     private ActionSelector actionSelector;
+
+    [SerializeField] private AudioRunner audioRunner;
     
     public List<PlayerAction> AvailableActions(NavGridNode _node)
     {
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
         if(item)
         {
+            audioRunner.effect.Play();
             item.PickUpItem(this);
         }
         return item;
