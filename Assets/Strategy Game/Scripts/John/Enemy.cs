@@ -1,15 +1,19 @@
+using StrategyGame.Player;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavGridAgent))]
 public class Enemy : MonoBehaviour
 {
 	private NavGridAgent agent;
 	[SerializeField] private int movesPerTurn;
-	private int movesRemaining;
+	[HideInInspector] public int movesRemaining;
 	public bool HasFinishedTurn { get; private set; } = true;
-	[SerializeField] private NavGridAgent playerAgent;
+	private NavGridAgent playerAgent;
 
 	[SerializeField] private ParticleSystem electricEffect;
 	[SerializeField] private AudioSource soundEffect;
@@ -17,8 +21,19 @@ public class Enemy : MonoBehaviour
 	private void Start()
 	{
 		agent = GetComponent<NavGridAgent>();
+		playerAgent = FindObjectOfType<PlayerController>().PlayerAgent;
 	}
 
+	private void TryStepOnTrap()
+	{
+		Trap steppedOnTrap = Trap.ActivatedTrapNearPosition(agent.AgentNavGrid.GridSize * 0.2f, agent.CurrentNode.transform.position);
+		Debug.Log("tried to step on trap");
+		if(steppedOnTrap)
+		{
+			steppedOnTrap.StepOnTrap(this);
+		}
+	}
+	
 	public void PerformAction()
 	{
 		NavGridNode targetNode = agent.AgentNavGrid.ClosestNavGridNodeToPosition(playerAgent.transform.position);
@@ -56,6 +71,7 @@ public class Enemy : MonoBehaviour
 		{
 			yield return new WaitForSeconds(0.5f);
 			PerformAction();
+			TryStepOnTrap();
 			movesRemaining--;
 		}
 		HasFinishedTurn = true;
