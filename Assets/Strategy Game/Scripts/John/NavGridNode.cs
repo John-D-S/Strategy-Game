@@ -9,7 +9,7 @@ public class NavGridNode : MonoBehaviour
 	[System.NonSerialized] public NavGrid navGrid;
 	public List<NavGridNode> Neighbors { get; } = new List<NavGridNode>();
 
-	public bool IsBlocked => Physics.CheckSphere(transform.position, navGrid.GridSize, navGrid.PathBlockingLayers);
+	public bool IsBlocked => Physics.CheckSphere(transform.position, navGrid.GridSize * 0.25f, navGrid.PathBlockingLayers);
 
 	private bool IsInLayerMask(GameObject _gameObject, LayerMask _layerMask)
 	{
@@ -76,6 +76,12 @@ public class NavGridNode : MonoBehaviour
 			{
 				Gizmos.DrawLine(transform.position, neighbor.transform.position);
 			}
+		}
+
+		if(IsBlocked)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(transform.position, 1f);
 		}
 	}
 }

@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
 
 	private void Start()
 	{
+		gameObject.layer = LayerMask.NameToLayer("Enemy");
 		agent = GetComponent<NavGridAgent>();
-		playerAgent = FindObjectOfType<PlayerController>().PlayerAgent;
 	}
 
 	private void TryStepOnTrap()
@@ -36,9 +36,9 @@ public class Enemy : MonoBehaviour
 	
 	public void PerformAction()
 	{
-		NavGridNode targetNode = agent.AgentNavGrid.ClosestNavGridNodeToPosition(playerAgent.transform.position);
+		NavGridNode targetNode = PlayerController.thePlayerController.PlayerAgent.CurrentNode;
 		NavGridNode nextNodeTowardTarget = agent.NextNodeTowardTarget(targetNode, true);
-		if(nextNodeTowardTarget == null)
+		if(nextNodeTowardTarget == null || nextNodeTowardTarget.IsBlocked)
 		{
 			nextNodeTowardTarget = agent.NextNodeTowardTarget(targetNode, false);
 			if(nextNodeTowardTarget.IsBlocked)

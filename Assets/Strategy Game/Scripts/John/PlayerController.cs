@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Button undoActionButton;
     [System.NonSerialized] public bool isPlayerTurn = true;
     [SerializeField] private TextMeshProUGUI turnsRemainingDisplay;
-    
+
+    public static PlayerController thePlayerController;
     private NavGridAgent agent;
     public NavGridAgent PlayerAgent => agent;
     public NavGridNode CurrentNode => agent.CurrentNode;
@@ -167,6 +168,11 @@ public class PlayerController : MonoBehaviour
         {
             turnsRemainingDisplay.text = $"Actions Remaining: {(actionsAtStartOfTurn + additionalActions) - actionsDoneThisTurn.Count} / {(actionsAtStartOfTurn + additionalActions)}";
         }
+    }
+
+    private void Awake()
+    {
+        thePlayerController = this;
     }
 
     private void Start()

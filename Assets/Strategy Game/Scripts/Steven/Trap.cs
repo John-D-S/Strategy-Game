@@ -36,13 +36,16 @@ namespace StrategyGame.Player
         {
             foreach(Trap trap in allTraps)
             {
-                if(Vector3.Distance(_position, trap.transform.position) < _maxDistance)
+                if(trap != null)
                 {
-                    if(trap.TrapIsActivated)
+                    if(Vector3.Distance(_position, trap.transform.position) < _maxDistance)
                     {
-                        return trap;
-                    }
-                }			
+                        if(trap.TrapIsActivated)
+                        {
+                            return trap;
+                        }
+                    }			
+                }
             }
             return null;
         }
@@ -52,9 +55,7 @@ namespace StrategyGame.Player
             Debug.Log("Enemy has hit a set trap");
             // Turn off the renderer
             rend.enabled = false;
-            // Instantiate the particle system and set its position.
-            Instantiate(particleSystem,this.transform);
-            particleSystem.transform.position = this.transform.position;
+            // Play the particle system.
             particleSystem.Play();
                     
             //todo play explosion sound
@@ -62,6 +63,7 @@ namespace StrategyGame.Player
                     
             //Destroy object and particle system.
             Destroy(this.gameObject,0.35f);
+            allTraps.Remove(this);
         }
     }
 }
