@@ -33,7 +33,7 @@ public class NavGridNode : MonoBehaviour
 			{
 				RaycastHit hit = new RaycastHit();
 				Ray ray = new Ray(transform.position + new Vector3(x * navGrid.GridSize, navGrid.NodeCheckHeight, z * navGrid.GridSize), Vector3.down);
-				if(Physics.Raycast(ray, out hit, navGrid.NodeCheckRayDistance))
+				if(Physics.Raycast(ray, out hit, navGrid.NodeCheckRayDistance, ~navGrid.PathBlockingLayers))
 				{
 					GameObject hitObject = hit.collider.gameObject;
 					NavGridNode hitNavGridNode = hitObject.GetComponent<NavGridNode>();
