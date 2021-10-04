@@ -78,7 +78,7 @@ public class NavGridNode : MonoBehaviour
 			}
 		}
 
-		if(IsBlocked)
+		if( Application.isPlaying && IsBlocked)
 		{
 			Gizmos.color = Color.red;
 			Gizmos.DrawSphere(transform.position, 1f);

@@ -68,6 +68,21 @@ public class PlayerController : MonoBehaviour
         return returnValue;
     }
 
+    public void UpdateNeighborNodeMaterials()
+    {
+        foreach(NavGridNode navGridNode in CurrentNode.navGrid.AllNodes)
+        {
+            if(CurrentNode.Neighbors.Contains(navGridNode))
+            {
+                NodeMaterialSwitcher.MaterialSwitchersByNavGridNodes[navGridNode].SwitchToEnableMaterial();
+            }
+            else
+            {
+                NodeMaterialSwitcher.MaterialSwitchersByNavGridNodes[navGridNode].SwitchToDefaultMaterial();
+            }
+        }
+    }
+    
     public Item TryPickupItem()
     {
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
@@ -184,6 +199,8 @@ public class PlayerController : MonoBehaviour
         {
             undoActionButton.onClick.AddListener(UndoAction);
         }
+        
+        Invoke("UpdateNeighborNodeMaterials", 0.1f);
     }
     
     private void Update()

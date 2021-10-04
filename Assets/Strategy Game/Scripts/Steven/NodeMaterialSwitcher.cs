@@ -5,12 +5,13 @@ using UnityEngine;
 /// <summary>
 /// Handles switching the materials of the game object the script is on. Can be called from playercontroler.
 /// </summary>
-public class MaterialSwitcher : MonoBehaviour
+public class NodeMaterialSwitcher : MonoBehaviour
 {
     [Header("Materials"), Tooltip("Set the materials here for the different states.")]
     [SerializeField] private Material enableMaterial;
     [SerializeField] private Material disableMaterial;
     [SerializeField] private Material defaultMaterial;
+    public static Dictionary<NavGridNode, NodeMaterialSwitcher> MaterialSwitchersByNavGridNodes = new Dictionary<NavGridNode, NodeMaterialSwitcher>();
 
     private MeshRenderer meshRenderer;
     
@@ -18,6 +19,11 @@ public class MaterialSwitcher : MonoBehaviour
     void Start()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
+        NavGridNode node = GetComponentInParent<NavGridNode>();
+        if(node)
+        {
+            MaterialSwitchersByNavGridNodes[node] = this;
+        }
     }
     
     /// <summary>

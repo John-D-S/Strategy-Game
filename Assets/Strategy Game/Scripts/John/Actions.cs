@@ -22,6 +22,7 @@ public abstract class PlayerAction
             player.actionsDoneThisTurn.Add(this);
             ExecuteAction();
             player.HideActionSelector();
+            player.UpdateNeighborNodeMaterials();
             hasBeenExexuted = true;
         }
     }
@@ -31,6 +32,7 @@ public abstract class PlayerAction
         if(hasBeenExexuted)
         {
             UndoAction();
+            player.UpdateNeighborNodeMaterials();
             hasBeenExexuted = false;
         }
         

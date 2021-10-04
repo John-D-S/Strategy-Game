@@ -22,6 +22,7 @@ public class NavGrid : MonoBehaviour
 	public float GridSize => gridSize;
 	[SerializeField] private GameObject nodePrefab;
 	private List<NavGridNode> allNodes = new List<NavGridNode>();
+	public List<NavGridNode> AllNodes => allNodes;
 	public Dictionary<GameObject, NavGridNode> NodesByGameObject { get; private set; } = new Dictionary<GameObject, NavGridNode>();
 	[SerializeField, Tooltip("Turn this off before entering play mode")] private bool showNodesInEditMode;
 
