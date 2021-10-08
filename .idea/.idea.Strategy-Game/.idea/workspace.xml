@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Prefabs/UI/ActionSelectionButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Prefabs/UI/ActionSelectionButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level 2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Strategy Game/Scenes/Steve Level 2.unity" afterDir="false" />
-    </list>
+    <list default="true" id="ec8e2a83-2534-4700-b58b-7103a1c736af" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,15 +21,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/Exit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/AudioRunner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/SimpleNavigator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Item.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/TurnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Actions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Unity Editor Installations/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/ActionSelector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82EC470C-9131-4935-8AD0-C83AD628910C/7a/31694f28/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/e7/90c53cf0/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/PopupUIControl.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -81,10 +75,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27840">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="27840" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -112,6 +106,7 @@
       <workItem from="1633046799727" duration="12790000" />
       <workItem from="1633224181734" duration="2772000" />
       <workItem from="1633308060151" duration="17421000" />
+      <workItem from="1633654191975" duration="366000" />
     </task>
     <servers />
   </component>
@@ -141,29 +136,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/Steven/Trap.cs</url>
-          <line>35</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\Steven\Trap.cs" initialLine="35" containingFunctionPresentation="method 'ActivatedTrapNearPosition'">
-            <startOffsets>
-              <option value="1175" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1176" />
-            </endOffsets>
-          </properties>
+          <line>40</line>
+          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\Steven\Trap.cs" initialLine="35" containingFunctionPresentation="method 'ActivatedTrapNearPosition'" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Strategy Game/Scripts/John/Enemy.cs</url>
-          <line>73</line>
-          <properties documentPath="D:\GitHub\Strategy-Game\Assets\Strategy Game\Scripts\John\Enemy.cs" initialLine="73" containingFunctionPresentation="method 'RunTurn'">
-            <startOffsets>
-              <option value="1877" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1893" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
