@@ -14,6 +14,7 @@ public class TurnManager : MonoBehaviour
     private PlayerController player;
     public List<Enemy> allEnemies = new List<Enemy>();
     [SerializeField] private PopupUIControl popupUIControl;
+    [SerializeField] private GameObject yourTurnText;
 
     public void Awake()
     {
@@ -43,11 +44,28 @@ public class TurnManager : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
         }
+        YourTurnUIOn();
+        Debug.Log("Your turn.");
         player.isPlayerTurn = true;
+    }
+    
+    /// <summary>
+    /// Turns on the UI informing the player its now their turn.
+    /// </summary>
+    private void YourTurnUIOn()
+    {
+        yourTurnText.SetActive(true);
+        Invoke(nameof(YourTurnUIOff), 1f);
     }
 
     /// <summary>
-    /// for now this just reloads the game
+    /// Turns off the UI informing the player its their turn.
+    /// </summary>
+    private void YourTurnUIOff() => yourTurnText.SetActive(false);
+    
+
+    /// <summary>
+    /// Shows the end game popup.
     /// </summary>
     public void LooseGame()
     {

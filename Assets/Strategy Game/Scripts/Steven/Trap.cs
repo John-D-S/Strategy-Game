@@ -58,7 +58,7 @@ namespace StrategyGame.Player
             // Play the particle system.
             particleSystem.Play();
                     
-            //todo play explosion sound
+            
             _enemy.movesRemaining = Mathf.Clamp(_enemy.movesRemaining - movesToTakeFromEnemy, 0, _enemy.movesRemaining);
                     
             //Destroy object and particle system.

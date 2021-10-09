@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
 	[SerializeField] private ParticleSystem electricEffect;
 	[SerializeField] private AudioSource soundEffect;
+	[SerializeField] private AudioSource explosionEffect;
 
 	private void Start()
 	{
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
 		if(steppedOnTrap)
 		{
 			steppedOnTrap.StepOnTrap(this);
+			explosionEffect.Play();
 		}
 	}
 	
