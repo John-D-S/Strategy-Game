@@ -86,7 +86,7 @@ namespace BasicMenuFramework.Core
                 int resIndex = PlayerPrefs.GetInt("Resolution");
                 resolutionDropdown.value = resIndex;
                 resolutionDropdown.RefreshShownValue();
-                SetResolution(resIndex);
+                //SetResolution(resIndex);
             }
             else
             {
