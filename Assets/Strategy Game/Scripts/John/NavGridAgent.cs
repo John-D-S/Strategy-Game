@@ -157,6 +157,9 @@ public class NavGridAgent : MonoBehaviour
 		return null;
 	}
 
+	/// <summary>
+	/// move the agent one block towards the target
+	/// </summary>
 	public void MoveTowards(NavGridNode _target, bool _accountForBlocks = false)
 	{
 		targetNode = _target;
@@ -178,6 +181,9 @@ public class NavGridAgent : MonoBehaviour
 		}
 	}
 	
+	/// <summary>
+	/// step the agent all the way to the given target
+	/// </summary>
 	private IEnumerator WalkTowardsTarget(NavGridNode _target, bool _accountForBlocks = false)
 	{
 		targetNode = _target;
@@ -188,6 +194,9 @@ public class NavGridAgent : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// step the agent along to the given target for _maxTilesToMove blocks
+	/// </summary>
 	private IEnumerator WalkTowardsTarget(NavGridNode _target, int _maxTilesToMove, bool _accountForBlocks = false)
 	{
 		targetNode = _target;
@@ -201,19 +210,27 @@ public class NavGridAgent : MonoBehaviour
 	}
 
 #region MoveToTargetOverrides
-	
+	/// <summary>
+	/// step the agent all the way to the given target.
+	/// </summary>
 	public void MoveToTarget(NavGridNode _target)
 	{
 		StopAllCoroutines();
 		StartCoroutine(WalkTowardsTarget(_target));
 	}
 
+	/// <summary>
+	/// step the agent along to the given target for _maxTilesToMove blocks
+	/// </summary>
 	public void MoveToTarget(NavGridNode _target, int _maxTilesToMove)
 	{
 		StopAllCoroutines();
         StartCoroutine(WalkTowardsTarget(_target, _maxTilesToMove));
 	}
 	
+	/// <summary>
+	/// step the agent all the way to node closest to the _target GameObject.
+	/// </summary>
 	public void MoveToTarget(GameObject _target)
 	{
 		if(navGrid.NodesByGameObject.ContainsKey(_target))
@@ -224,6 +241,9 @@ public class NavGridAgent : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// step the agent along the path to the given _target GameObject for _maxTilesToMove blocks
+	/// </summary>
 	public void MoveToTarget(GameObject _target, int _maxTilesToMove)
 	{
 		if(navGrid.NodesByGameObject.ContainsKey(_target))
@@ -234,6 +254,9 @@ public class NavGridAgent : MonoBehaviour
 		}
 	}
 	
+	/// <summary>
+	/// Step the agent towards the closest node to the given _target position
+	/// </summary>
 	public void MoveToTarget(Vector3 _target)
 	{
 		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
@@ -241,6 +264,11 @@ public class NavGridAgent : MonoBehaviour
 		StartCoroutine(WalkTowardsTarget(nodeTarget));
 	}
 	
+	/// <summary>
+	/// move the agent along the path to the closest node to the given _target position for _maxTilesToMove nodes
+	/// </summary>
+	/// <param name="_target"></param>
+	/// <param name="_maxTilesToMove"></param>
 	public void MoveToTarget(Vector3 _target, int _maxTilesToMove)
 	{
 		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
@@ -252,11 +280,17 @@ public class NavGridAgent : MonoBehaviour
 
 #region NumberOfNodesToTargetOverrides
 
+	/// <summary>
+	/// returns the number of nodes to the given navgrid node
+	/// </summary>
 	public int NumberOfNodesToTarget(NavGridNode _target)
 	{
 		return CalculatePathToTarget(currentNode, _target).Count;
 	}
 	
+	/// <summary>
+	/// returns the number of nodes to the node closest to the _target gameobject
+	/// </summary>
 	public int NumberOfNodesToTarget(GameObject _target)
 	{
 		if(navGrid.NodesByGameObject.ContainsKey(_target))
@@ -267,6 +301,9 @@ public class NavGridAgent : MonoBehaviour
 		return 0;
 	}
 
+	/// <summary>
+	/// returns the number of nodes to the node closest to the _target position
+	/// </summary>
 	public int NumberOfNodesToTarget(Vector3 _target)
 	{
 		NavGridNode nodeTarget = navGrid.ClosestNavGridNodeToPosition(_target);
@@ -277,8 +314,10 @@ public class NavGridAgent : MonoBehaviour
 	
 	private void FixedUpdate()
 	{
+		//lerp the position towards the current node's position
 		transform.position = Vector3.Lerp(transform.position, currentNode.transform.position, lerpAmount);
 
+		//if turnInDirecitonOfTravel is true, turn the gameobject so that its local z axis alligns with its direciton of travel
 		if(turnInDirectionOfTravel)
 		{
 			Vector3 moveDirection = (currentNode.transform.position - transform.position).normalized;
@@ -288,6 +327,7 @@ public class NavGridAgent : MonoBehaviour
 
 	private void Start()
 	{
+		//if the navgrid exists, set the current node to the closest node to the agent's position, and set the position of the gameObject to position of the current node
 		if(navGrid)
 		{
 			currentNode = navGrid.ClosestNavGridNodeToPosition(transform.position);

@@ -13,16 +13,18 @@ public class TurnManager : MonoBehaviour
     public static TurnManager theTurnManager;
     private PlayerController player;
     public List<Enemy> allEnemies = new List<Enemy>();
-    [SerializeField] private PopupUIControl popupUIControl;
-    [SerializeField] private GameObject yourTurnText;
+    [SerializeField, Tooltip("The popup UI control thing")] private PopupUIControl popupUIControl;
+    [SerializeField, Tooltip("The text that shows that it is the player's turn")] private GameObject yourTurnText;
 
     public void Awake()
     {
+        //sets the turnmanager to this so that other things can reference it
         theTurnManager = this;
     }
 
     public void Start()
     {
+        //initialize the player and enemies
         player = FindObjectOfType<PlayerController>();
         allEnemies = FindObjectsOfType<Enemy>().ToList();
     }
@@ -32,6 +34,9 @@ public class TurnManager : MonoBehaviour
         StartCoroutine(RunNextTurn());
     }
 
+    /// <summary>
+    /// runs the next turn
+    /// </summary>
     private IEnumerator RunNextTurn()
     {
         player.isPlayerTurn = false;

@@ -18,7 +18,7 @@ public class ActionSelector : MonoBehaviour
     
     [SerializeField] private RectTransform buttonPanel;
     private PlayerController player;
-    public GameObject ActionButtonPrefab;
+    [Tooltip("The button used to select the action")] public GameObject ActionButtonPrefab;
     private List<PlayerAction> availablePlayerActions = new List<PlayerAction>();
     public delegate void PlayerActionDelegate();
 
@@ -26,12 +26,16 @@ public class ActionSelector : MonoBehaviour
     
     private void Start()
     {
+        //initializes all the variables
         rootCanvas = GetComponentInParent<Canvas>();
         player = FindObjectOfType<PlayerController>();
         rectTransform = GetComponent<RectTransform>();
         gameObject.SetActive(false);
     }
     
+    /// <summary>
+    /// moves the recttransform to the cursor's position when enabled and adds a button for each action
+    /// </summary>
     private void OnEnable()
     {
         if(!player || !rectTransform)
@@ -55,6 +59,9 @@ public class ActionSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// destroys all the buttons when disabled
+    /// </summary>
     private void OnDisable()
     {
         foreach(RectTransform childTransform in buttonPanel)

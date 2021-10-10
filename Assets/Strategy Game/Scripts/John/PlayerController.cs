@@ -22,12 +22,12 @@ using Object = UnityEngine.Object;
 [RequireComponent(typeof(NavGridAgent))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int actionsAtStartOfTurn = 5;
+    [SerializeField, Tooltip("The number of actions available to the player at the start of the turn")] private int actionsAtStartOfTurn = 5;
     public int ActionsAtStartOfTurn => actionsAtStartOfTurn;
     public int additionalActions;
-    [SerializeField] private Button undoActionButton;
+    [SerializeField, Tooltip("The button which undoes the actions taken by the player")] private Button undoActionButton;
     [System.NonSerialized] public bool isPlayerTurn = true;
-    [SerializeField] private TextMeshProUGUI turnsRemainingDisplay;
+    [SerializeField, Tooltip("The text that displays the number of turns remaining")] private TextMeshProUGUI turnsRemainingDisplay;
 
     public static PlayerController thePlayerController;
     private NavGridAgent agent;
@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     private NavGridNode selectedNode;
     public NavGridNode SelectedNode => selectedNode;
 
+    /// <summary>
+    /// Returns the list of neighboring nodes of the game object of any given node
+    /// </summary>
     public Dictionary<GameObject, NavGridNode> NeighboringNodesByGameObject
     {
         get
@@ -56,7 +59,10 @@ public class PlayerController : MonoBehaviour
     private ActionSelector actionSelector;
 
     [SerializeField] private AudioRunner audioRunner;
-    
+
+    /// <summary>
+    /// the list of actions available for the player to do
+    /// </summary>
     public List<PlayerAction> AvailableActions(NavGridNode _node)
     {
         List<PlayerAction> returnValue = new List<PlayerAction>();
@@ -68,6 +74,9 @@ public class PlayerController : MonoBehaviour
         return returnValue;
     }
 
+    /// <summary>
+    /// Updates the materials of neighboring nodes of the player
+    /// </summary>
     public void UpdateNeighborNodeMaterials()
     {
         foreach(NavGridNode navGridNode in CurrentNode.navGrid.AllNodes)
@@ -83,6 +92,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// tries to pick up the item on the node the player is currently standing on
+    /// </summary>
     public Item TryPickupItem()
     {
         Item item = Item.ItemNearPosition(agent.AgentNavGrid.GridSize * 0.5f, agent.CurrentNode.transform.position);
@@ -94,6 +106,9 @@ public class PlayerController : MonoBehaviour
         return item;
     }
 
+    /// <summary>
+    /// undoes the picking up of an item, putting it back to where it started
+    /// </summary>
     public void UndoPickupItem(Item _item)
     {
         _item.UndoPickUpItem(this);
@@ -109,7 +124,10 @@ public class PlayerController : MonoBehaviour
             actionsDoneThisTurn[actionsDoneThisTurn.Count - 1].PlayerExecuteAction();
         }
     }
-
+    
+    /// <summary>
+    /// undoes the last action
+    /// </summary>
     public void UndoAction()
     {
         HideActionSelector();
@@ -121,6 +139,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ends the player's turn
+    /// </summary>
     public void EndTurn()
     {
         if(isPlayerTurn)
@@ -131,16 +152,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// shows the action selector
+    /// </summary>
     public void ShowActionSelector()
     {
         actionSelector.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// hides the action selector
+    /// </summary>
     public void HideActionSelector()
     {
         actionSelector.gameObject.SetActive(false);
     }
     
+    /// <summary>
+    /// shows the available player actions if it is the player's turn and the player clicks on one of the player character's neighboring nodes.
+    /// </summary>
     private void UpdatePlayerActions()
     {
         if(isPlayerTurn)
@@ -179,6 +209,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //update what is shown on the turns remaining display so that it shows the correct number of turns remaining
         if(turnsRemainingDisplay)
         {
             turnsRemainingDisplay.text = $"Actions Remaining: {(actionsAtStartOfTurn + additionalActions) - actionsDoneThisTurn.Count} / {(actionsAtStartOfTurn + additionalActions)}";
@@ -187,11 +218,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        //initialize the playerController
         thePlayerController = this;
     }
 
     private void Start()
     {
+        //initialise all the other variables.
         turnManager = TurnManager.theTurnManager;
         agent = GetComponent<NavGridAgent>();
         actionSelector = FindObjectOfType<ActionSelector>(true);
@@ -205,6 +238,7 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        //updates the player actions
         UpdatePlayerActions();        
     }
 }

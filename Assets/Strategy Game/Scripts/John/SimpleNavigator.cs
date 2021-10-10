@@ -7,15 +7,15 @@ public class SimpleNavigator : MonoBehaviour
 {
     private NavGridAgent navGridAgent;
     
-    // Start is called before the first frame update
     void Start()
     {
+        //initialise the navGridAgent
         navGridAgent = GetComponent<NavGridAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //if the mouse button is pressed, move the agent to the node under the cursor if there is one.
         if(Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
