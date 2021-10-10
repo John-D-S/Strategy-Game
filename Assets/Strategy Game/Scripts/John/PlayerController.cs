@@ -1,23 +1,11 @@
 using StrategyGame;
-
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using TMPro;
 
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.WSA;
-
-using Cursor = UnityEngine.Cursor;
-using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(NavGridAgent))]
 public class PlayerController : MonoBehaviour

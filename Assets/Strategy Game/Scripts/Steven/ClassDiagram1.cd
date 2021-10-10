@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayerAction">
+    <Position X="3.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAEAAAAAAAEAAABBAAEABAgEAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Move">
+    <Position X="4.75" Y="9.25" Width="1.5" />
+    <InheritanceLine Type="PlayerAction" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="9.103" />
+        <Point X="4.5" Y="10.273" />
+        <Point X="4.75" Y="10.273" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAABAAEAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceItem">
+    <Position X="2.5" Y="9.25" Width="1.5" />
+    <InheritanceLine Type="PlayerAction" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="9.103" />
+        <Point X="4.5" Y="10.259" />
+        <Point X="3.668" Y="10.259" />
+        <Point X="3.668" Y="10.158" />
+        <Point X="4" Y="10.158" />
+        <Point X="4" Y="10.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAQCAAAABAAEAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionSelector">
+    <Position X="1.5" Y="5.75" Width="2" />
+    <NestedTypes>
+      <Delegate Name="ActionSelector.PlayerActionDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Strategy Game\Scripts\John\ActionSelector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgEAAAAACAAAAAAAAAIAAEAAAAAAAAJAAAAAgAACAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\ActionSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="11.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIEEAADIAARBAAAAABAAAAABAAEAAAACAAAAIAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAAADCAAAAAAAAAAgUAAAAAAAAAAAABAACAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.Player.ExtraMovePickup">
+    <Position X="7.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\ExtraMovePickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavGrid">
+    <Position X="10.25" Y="9.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>oQAggYAAQCAAAAAAACUKAUAAAAAAQAAAAgCAAQIAEAE=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\NavGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavGridAgent">
+    <Position X="15.25" Y="9.75" Width="2.5" />
+    <NestedTypes>
+      <Class Name="NavGridAgent.TempNodeProperties" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Strategy Game\Scripts\John\NavGridAgent.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEAEEAAiAAISAAAAQABAAAAABMAAAARABAAEAQAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\NavGridAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavGridNode">
+    <Position X="13" Y="12" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAQAAAAAAAAAEAAIAAAAAAgAAgAAIABAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\NavGridNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="8.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAQQAACACiAIgQAEIAEBBCACBAkIAAAhIABQAEICEEA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

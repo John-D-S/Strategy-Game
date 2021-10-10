@@ -1,11 +1,7 @@
 using StrategyGame.Player;
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NavGridAgent))]
 public class Enemy : MonoBehaviour

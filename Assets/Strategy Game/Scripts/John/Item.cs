@@ -1,12 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-
-using TMPro;
-
 using UnityEngine;
-
-using Action = System.Action;
 
 /// <summary>
 /// a component given to an object that can be picked up and placed by the player
