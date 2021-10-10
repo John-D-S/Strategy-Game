@@ -4385,11 +4385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.06371598
+      value: 0.06371595
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.014759428
+      value: 0.014759423
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4397,7 +4397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373178512861, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.22518545
+      value: -0.22518548
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4413,11 +4413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.064115055
+      value: 0.06411505
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01291627
+      value: 0.012916268
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -11842,6 +11842,10 @@ PrefabInstance:
       propertyPath: navGrid
       value: 
       objectReference: {fileID: 42434859}
+    - target: {fileID: 9110735934038152382, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
 --- !u!1001 &933052571
@@ -17405,6 +17409,10 @@ PrefabInstance:
       propertyPath: navGrid
       value: 
       objectReference: {fileID: 42434859}
+    - target: {fileID: 9110735934038152382, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
 --- !u!1001 &1331358891
@@ -22518,7 +22526,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648257886}
-  m_LocalRotation: {x: 0.012659066, y: 0.978989, z: -0.19314003, w: 0.06416633}
+  m_LocalRotation: {x: 0.0126590645, y: 0.978989, z: -0.19314003, w: 0.06416632}
   m_LocalPosition: {x: 5.8523855, y: 2.4469788, z: 33.841038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -30168,6 +30176,10 @@ PrefabInstance:
       propertyPath: navGrid
       value: 
       objectReference: {fileID: 42434859}
+    - target: {fileID: 9110735934038152382, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ab04c72fa2fd74ea00e27c594af551, type: 3}
 --- !u!114 &6188103777519848628
