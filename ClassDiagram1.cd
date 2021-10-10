@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StrategyGame.AudioRunner">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgCAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAQIAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\AudioRunner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.Camera.CameraControl">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAAAAAAAAAgAAAAYAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\CameraControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.Exit">
+    <Position X="5.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAABCCQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\Exit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.Player.ExtraMovePickup">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\ExtraMovePickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodeMaterialSwitcher">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAACAIACAAAAAACCAAAAAASAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\NodeMaterialSwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.UI.PointsPopUp">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAACAAAAAABAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\PointsPopUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.UI.PopupUIControl">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="StrategyGame.UI.PopupUIControl.PopUpStruct" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Strategy Game\Scripts\Steven\PopupUIControl.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAQCAAAAAQoAAAAIAAAgAAAAQAgABAAAAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\PopupUIControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrategyGame.Player.Trap">
+    <Position X="9.25" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAIAAAAAGQAAAAAAAACAAAAAAAAAAAAAEE=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\Steven\Trap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="7.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAAADCAAAAAAAAAAgUAAAAAAAAAAAABAACAAAAA=</HashCode>
+      <FileName>Assets\Strategy Game\Scripts\John\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
