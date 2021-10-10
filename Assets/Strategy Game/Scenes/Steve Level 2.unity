@@ -4413,11 +4413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.064115025
+      value: 0.06411501
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012916265
+      value: 0.012916263
       objectReference: {fileID: 0}
     - target: {fileID: 7118601373261491300, guid: 6e05deeede402e4468c9e923276f65e5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -22569,7 +22569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648257886}
-  m_LocalRotation: {x: 0.01265906, y: 0.978989, z: -0.19314003, w: 0.06416631}
+  m_LocalRotation: {x: 0.012659061, y: 0.978989, z: -0.19314003, w: 0.06416629}
   m_LocalPosition: {x: 5.8523855, y: 2.4469788, z: 33.841038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -29650,6 +29650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuControls
       objectReference: {fileID: 0}
+    - target: {fileID: 3006286110978380759, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3006286111037352911, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -29705,6 +29709,10 @@ PrefabInstance:
     - target: {fileID: 3006286111402093524, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006286111427347462, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3006286111484862817, guid: ed243d6fe719f5044b43cb27ec1abee1, type: 3}
       propertyPath: m_SizeDelta.x

@@ -12,7 +12,7 @@ namespace StrategyGame.Player
     public class Trap : MonoBehaviour
     {
         [SerializeField, Tooltip("The amount of moves to take away from the enemy when they step on the trap.")] private int movesToTakeFromEnemy = 100;
-        public new ParticleSystem particleSystemTrap;
+        public ParticleSystem particleSystemTrap;
         //For when the trap is set and not a pickup.
         public bool TrapIsActivated => item.isActivated;
         private Item item;

@@ -36,6 +36,7 @@ namespace BasicMenuFramework.Core
                 qualityDropdown.onValueChanged.AddListener(Quality);
                 QualitySetup();
             }
+            fullscreenToggle.onValueChanged.AddListener(Fullscreen);
             
         }
 
