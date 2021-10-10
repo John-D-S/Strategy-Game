@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movesToTakeFromEnemy: 100
-  particleSystem: {fileID: 966951719397456087}
+  particleSystemTrap: {fileID: 966951719397456087}
 --- !u!114 &2354698997646187701
 MonoBehaviour:
   m_ObjectHideFlags: 0
