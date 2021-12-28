@@ -52,7 +52,7 @@ MonoBehaviour:
   movesPerTurn: 6
   movesRemaining: 0
   electricEffect: {fileID: 9110735934038152382}
-  soundEffect: {fileID: 6106349589946664844}
+  electricSoundEffect: {fileID: 6106349589946664844}
   explosionEffect: {fileID: 4591459773330150472}
 --- !u!114 &6106349589901535959
 MonoBehaviour:
